@@ -72,7 +72,25 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </section>
+        <section className={styles.quote}>
+          <q>
+            <Quote />
+          </q>
+        </section>
       </header>
+    </>
+  )
+}
+
+const QUOTE_TEXT = '音楽の輪が限りなく広がりますように'
+
+const Quote = () => {
+  return (
+    <>
+      {QUOTE_TEXT.split('').map((q, i) => (
+        <span key={i}>{q}</span>
+      ))}
+      <span className={styles.dash}>&mdash;&mdash;</span>
     </>
   )
 }
