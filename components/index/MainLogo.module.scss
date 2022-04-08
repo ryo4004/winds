@@ -1,0 +1,121 @@
+.main-logo {
+  z-index: 3;
+
+  position: sticky;
+  top: 0;
+  padding: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @media (max-width: 767px) {
+    & {
+      padding: 24px 24px 96px;
+    }
+  }
+
+  main {
+    flex-grow: 2;
+    width: 100%;
+
+    &.before-direct-link {
+      padding: 0 0 12px;
+    }
+  }
+}
+
+.direct-link {
+  margin: 12px 0 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-delay: 5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+
+  a {
+    position: relative;
+    display: block;
+    padding: 8px 24px;
+    border: 0.55px solid rgba(255, 255, 255, 1);
+    border-radius: 2px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.1);
+    transition: all ease-in-out 0.1s;
+    overflow: hidden;
+    line-height: 1.2;
+
+    &:hover {
+      border: 0.55px solid #00496d;
+      // main
+      background: #00496d;
+      // mini
+      // border: rgba(243, 168, 191, 1);
+      // background: rgba(243, 168, 191, 1);
+
+      &:before {
+        animation: none;
+      }
+    }
+
+    &:before {
+      background: #fff;
+      content: '';
+      height: 155px;
+      left: -75px;
+      opacity: 0.2;
+      position: absolute;
+      top: -50px;
+      transform: rotate(35deg);
+      width: 50px;
+      z-index: -10;
+      animation-name: slash;
+      animation-duration: 6s;
+      animation-delay: 0.5s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease-in;
+    }
+
+    @keyframes slash {
+      0% {
+        left: -75px;
+      }
+      90% {
+        left: -75px;
+      }
+      100% {
+        left: 120%;
+      }
+    }
+
+    .detail {
+      p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 11px;
+      }
+
+      h3 {
+        margin-top: 2px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
