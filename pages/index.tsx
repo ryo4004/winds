@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 import { Logo } from '../components/svg/Logo'
 
@@ -60,6 +61,16 @@ const Home: NextPage = () => {
           <main className={styles['before-direct-link']}>
             <Logo />
           </main>
+          <div className={styles['direct-link']}>
+            <Link href="#">
+              <a>
+                <div className={styles.detail}>
+                  <p>演奏会のお知らせ</p>
+                  <h3>定期演奏会</h3>
+                </div>
+              </a>
+            </Link>
+          </div>
         </section>
       </header>
     </>
