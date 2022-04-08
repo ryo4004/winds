@@ -161,7 +161,6 @@
   section.main-logo {
     z-index: 3;
 
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     padding: 24px;
@@ -336,8 +335,6 @@
       color: rgba(255, 255, 255, 0.6);
       font-family: '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'Sawarabi Mincho', 'HG明朝E',
         'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
-      -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
       writing-mode: vertical-rl;
 
       @media (max-width: 767px) {
@@ -363,23 +360,6 @@
         @for $i from 1 through 18 {
           &:nth-child(#{$i}) {
             animation-delay: #{5.9 + ($i / 10)}s;
-          }
-        }
-
-        @-webkit-keyframes fade-in {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes fade-in {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
           }
         }
       }
@@ -430,7 +410,7 @@
         opacity: 0;
       }
       50% {
-        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
         opacity: 1;
       }
       100% {
