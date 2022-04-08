@@ -77,6 +77,7 @@ const Home: NextPage = () => {
             <Quote />
           </q>
         </section>
+        <span className={styles['scroll-guide']}></span>
       </header>
     </>
   )
