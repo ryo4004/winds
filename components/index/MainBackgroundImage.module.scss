@@ -1,0 +1,155 @@
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 0;
+
+  .first {
+    animation-name: first;
+    background: url('../../public/images/001.jpg') no-repeat 50% 50%;
+  }
+
+  .second {
+    animation-name: second;
+    background: url('../../public/images/002.jpg') no-repeat 50% 50%;
+  }
+
+  .third {
+    animation-name: first;
+    background: url('../../public/images/003.jpg') no-repeat 50% 50%;
+  }
+
+  .fourth {
+    animation-name: second;
+    background: url('../../public/images/004.jpg') no-repeat 50% 50%;
+  }
+
+  .fifth {
+    animation-name: first;
+    background: url('../../public/images/005.jpg') no-repeat 50% 50%;
+  }
+
+  .sixth {
+    animation-name: second;
+    background: url('../../public/images/006.jpg') no-repeat 50% 50%;
+  }
+
+  .seventh {
+    animation-name: first;
+    background: url('../../public/images/007.jpg') no-repeat 50% 50%;
+  }
+
+  .eighth {
+    animation-name: second;
+    background: url('../../public/images/008.jpg') no-repeat 50% 50%;
+  }
+
+  .ninth {
+    animation-name: first;
+    background: url('../../public/images/009.jpg') no-repeat 50% 50%;
+  }
+
+  .tenth {
+    animation-name: second;
+    background: url('../../public/images/010.jpg') no-repeat 50% 50%;
+  }
+
+  .eleventh {
+    animation-name: first;
+    background: url('../../public/images/011.jpg') no-repeat 50% 50%;
+  }
+
+  .twelfth {
+    animation-name: second;
+    background: url('../../public/images/012.jpg') no-repeat 50% 50%;
+  }
+
+  .thirteenth {
+    animation-name: first;
+    background: url('../../public/images/013.jpg') no-repeat 50% 50%;
+  }
+
+  .fourteenth {
+    animation-name: second;
+    background: url('../../public/images/014.jpg') no-repeat 50% 50%;
+  }
+
+  .first,
+  .second,
+  .third,
+  .fourth,
+  .fifth,
+  .sixth,
+  .seventh,
+  .eighth,
+  .ninth,
+  .tenth,
+  .eleventh,
+  .twelfth,
+  .thirteenth,
+  .fourteenth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    background-attachment: fixed;
+    animation-duration: 30s;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-size: cover;
+  }
+
+  .filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  @keyframes first {
+    0% {
+      opacity: 1;
+    }
+    40% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0;
+    }
+    90% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes second {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
