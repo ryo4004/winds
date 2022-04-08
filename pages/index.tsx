@@ -4,24 +4,25 @@ import styles from '../styles/index.module.scss'
 
 import type { NextPage } from 'next'
 
-const Home: NextPage = () => {
-  const backgroundPhotoStyleList = [
-    styles.first,
-    styles.second,
-    styles.third,
-    styles.fourth,
-    styles.fifth,
-    styles.sixth,
-    styles.seventh,
-    styles.eighth,
-    styles.ninth,
-    styles.tenth,
-    styles.eleventh,
-    styles.twelfth,
-    styles.thirteenth,
-    styles.fourteenth,
-  ]
+const backgroundPhotoStyleList = [
+  styles.first,
+  styles.second,
+  styles.third,
+  styles.fourth,
+  styles.fifth,
+  styles.sixth,
+  styles.seventh,
+  styles.eighth,
+  styles.ninth,
+  styles.tenth,
+  styles.eleventh,
+  styles.twelfth,
+  styles.thirteenth,
+  styles.fourteenth,
+]
 
+const Home: NextPage = () => {
+  
   const [count, setCount] = useState(2)
   const [firstStyle, setFirstStyle] = useState(backgroundPhotoStyleList[0])
   const [secondStyle, setSecondStyle] = useState(backgroundPhotoStyleList[1])
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
       }
     }, 15000) // CSS animationが30sなのでその半分を指定
     return () => clearInterval(interval)
-  }, [count])
+  }, [count,backgroundPhotoStyleList])
 
   return (
     <>
