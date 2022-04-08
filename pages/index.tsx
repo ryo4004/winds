@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+import { Logo } from '../components/svg/Logo'
+
 import styles from '../styles/index.module.scss'
 
 import type { NextPage } from 'next'
@@ -22,7 +24,6 @@ const backgroundPhotoStyleList = [
 ]
 
 const Home: NextPage = () => {
-  
   const [count, setCount] = useState(2)
   const [firstStyle, setFirstStyle] = useState(backgroundPhotoStyleList[0])
   const [secondStyle, setSecondStyle] = useState(backgroundPhotoStyleList[1])
@@ -45,7 +46,7 @@ const Home: NextPage = () => {
       }
     }, 15000) // CSS animationが30sなのでその半分を指定
     return () => clearInterval(interval)
-  }, [count,backgroundPhotoStyleList])
+  }, [count, backgroundPhotoStyleList])
 
   return (
     <>
@@ -54,6 +55,11 @@ const Home: NextPage = () => {
           <div className={firstStyle}></div>
           <div className={secondStyle}></div>
           <div className={styles.filter}></div>
+        </section>
+        <section className={styles['main-logo']}>
+          <main className={styles['before-direct-link']}>
+            <Logo />
+          </main>
         </section>
       </header>
     </>
