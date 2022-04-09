@@ -4,6 +4,7 @@ import { Quote } from '../components/index/Quote'
 import { ScrollGuide } from '../components/index/ScrollGuide'
 import { News } from '../components/index/News'
 import { Introduction } from '../components/index/Introduction'
+import { Concert } from '../components/index/Concert'
 
 import styles from '../styles/index.module.scss'
 
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
       <div>
         <News />
         <Introduction />
+        <Concert />
       </div>
     </>
   )
