@@ -5,15 +5,13 @@ import { ScrollGuide } from '../components/index/ScrollGuide'
 import { News } from '../components/index/News'
 import { Introduction } from '../components/index/Introduction'
 import { Concert } from '../components/index/Concert'
-import { useSchedule } from '../utilities/hooks/useSchedule'
+import { Schedule } from '../components/index/Schedule'
 
 import styles from '../styles/index.module.scss'
 
 import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
-  const { loading, schedule } = useSchedule()
-  console.log({ loading, schedule })
   return (
     <>
       <header className={styles.header}>
@@ -26,6 +24,7 @@ const Home: NextPage = () => {
         <News />
         <Introduction />
         <Concert />
+        <Schedule />
       </div>
     </>
   )
