@@ -3,6 +3,9 @@ import { ScheduleItem } from '../../types/schedule'
 
 export type PracticeScheduleItem = ScheduleItem & PracticeSchedule
 
+const weekdaysJa = ['月', '火', '水', '木', '金', '土', '日']
+const weekdaysEn = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+
 class PracticeSchedule {
   constructor() {}
 
@@ -18,6 +21,26 @@ class PracticeSchedule {
       schedule: { startAt },
     } = this
     return { year: startAt.year, month: startAt.month, day: startAt.day }
+  }
+
+  /**
+   * 練習日程の曜日を返す
+   */
+  getWeekdaysJa() {
+    const {
+      schedule: { startAt },
+    } = this
+    return weekdaysJa[Number(startAt.toFormat('c')) - 1]
+  }
+
+  /**
+   * 練習日程の曜日(英語)を返す
+   */
+  getWeekdaysEn() {
+    const {
+      schedule: { startAt },
+    } = this
+    return weekdaysEn[Number(startAt.toFormat('c')) - 1]
   }
 
   /**
