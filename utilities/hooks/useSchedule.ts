@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react'
+import { DateTime } from 'luxon'
 import useFetch from './useFetch'
 
 import { API_BASE_PATH, SCHEDULE_API } from '../constant'
+import { createPracticeSchedule } from '../domain/schedule/scheduleService'
 
-import type { ApiSchedule, ApiScheduleItem, Schedule, ScheduleItem } from '../types/schedule'
+import type { ApiSchedule, ApiScheduleItem } from '../types/schedule'
+import type { PracticeScheduleItem } from '../domain/schedule/scheduleService'
+
+export type Schedule = {
+  next: PracticeScheduleItem
+  list: Array<PracticeScheduleItem>
+}
 
 export const useSchedule = () => {
   const [schedule, setSchedule] = useState<Schedule | null>(null)
@@ -24,16 +32,17 @@ const createSchedule = (schedule: ApiSchedule): Schedule => {
     return createScheduleItem(item)
   })
   return {
-    next: {
-      today: schedule.today,
-      ...createScheduleItem(schedule.next),
-    },
+    next: createScheduleItem(schedule.next),
     list,
   }
 }
 
-const createScheduleItem = (item: ApiScheduleItem): ScheduleItem => {
+const createScheduleItem = (item: ApiScheduleItem): PracticeScheduleItem => {
   const startAt = item.date + 'T' + item.time.start + '+09:00'
   const endAt = item.date + 'T' + item.time.end + '+09:00'
-  return { startAt, endAt, memo: item.memo || '' }
+  return createPracticeSchedule({
+    startAt: DateTime.fromISO(startAt),
+    endAt: DateTime.fromISO(endAt),
+    memo: item.memo || '',
+  })
 }

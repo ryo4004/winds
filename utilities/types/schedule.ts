@@ -1,3 +1,5 @@
+import type { DateTime } from 'luxon'
+
 export type ApiSchedule = {
   timestamp: Timestamp
   today: Today
@@ -45,12 +47,7 @@ export type ApiScheduleItem = {
 }
 
 export type ScheduleItem = {
-  startAt: string
-  endAt: string
+  startAt: DateTime
+  endAt: DateTime
   memo: string
-}
-
-export type Schedule = {
-  next: ScheduleItem & { today: boolean }
-  list: Array<ScheduleItem>
 }
