@@ -6,6 +6,7 @@ import { News } from '../components/index/News'
 import { Introduction } from '../components/index/Introduction'
 import { Concert } from '../components/index/Concert'
 import { Schedule } from '../components/index/Schedule'
+import { Contact } from '../components/index/Contact'
 
 import styles from '../styles/index.module.scss'
 
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
         <Introduction />
         <Concert />
         <Schedule />
+        <Contact />
       </div>
     </>
   )
