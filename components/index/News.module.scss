@@ -1,0 +1,38 @@
+.news {
+  padding: 48px 0;
+  border: none;
+  background: #f3f3f3;
+
+  h2.title-large {
+    font-size: 2.4rem;
+
+    &::before {
+      font-size: 1.2rem;
+    }
+  }
+
+  .news-list {
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        padding: 2px 0;
+        color: #333;
+        text-decoration: none;
+
+        div {
+          min-width: 70px;
+          font-size: 0.9rem;
+          margin-right: 16px;
+        }
+
+        &:hover {
+          p {
+            text-decoration: underline;
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+}

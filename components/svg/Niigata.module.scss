@@ -1,0 +1,42 @@
+svg.japan-map {
+  // filter: blur(2px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140%;
+  fill: rgba(255, 255, 255, 0.8);
+  stroke-width: 0.1px;
+  stroke: #ccc;
+
+  @media (max-width: 767px) {
+    & {
+      width: 240%;
+    }
+  }
+
+  path {
+    opacity: 0.8;
+    fill: none;
+  }
+
+  polygon {
+    opacity: 0.8;
+  }
+
+  path#niigata {
+    stroke: #ccc;
+    // fill: rgba(255,255,255,.6);
+    // fill: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    fill: #efefef;
+  }
+
+  g#svg-horn {
+    transform: translate(368px, 353px) scale(0.5);
+    path {
+      stroke: none;
+      // fill: #b60005;
+      // fill: #fff;
+      fill: rgba(204, 148, 37, 0.5);
+    }
+  }
+}
