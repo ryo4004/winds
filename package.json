@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "prettier": "prettier --write '{components,pages,styles}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+    "prettier": "prettier --write '{components,pages,styles,utilities}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
     "classnames": "^2.3.1",
