@@ -1,8 +1,13 @@
+import { useState } from 'react'
+
 import classNames from 'classnames'
 
 import styles from './Contact.module.scss'
 
 export const Contact = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
   return (
     <div className={classNames('block', styles.contact)}>
       <div className="title">
@@ -18,7 +23,15 @@ export const Contact = () => {
         <form method="post" action="contact" id="contact-form">
           <label>
             <span>お名前</span>
-            <input type="text" name="name" value="" className={styles.name} id="form-name" required={true} />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className={styles.name}
+              id="form-name"
+              required={true}
+            />
           </label>
           <label>
             <span>メールアドレス</span>
@@ -27,7 +40,8 @@ export const Contact = () => {
               autoCorrect="off"
               autoCapitalize="off"
               name="email"
-              value=""
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className={styles.email}
               placeholder="連絡可能なメールアドレスを入力してください"
               id="form-email"
@@ -36,7 +50,14 @@ export const Contact = () => {
           </label>
           <label>
             <span>お問い合わせ内容</span>
-            <textarea name="message" className={styles.text} id="form-message" required={true}></textarea>
+            <textarea
+              name="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className={styles.text}
+              id="form-message"
+              required={true}
+            />
           </label>
           <button type="submit" name="send" className={styles.sendbutton} value="send">
             確認
