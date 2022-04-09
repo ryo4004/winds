@@ -8,15 +8,17 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "prettier": "prettier --write '{components,pages,styles}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+    "prettier": "prettier --write '{components,pages,styles,utilities}/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "luxon": "^2.3.1",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
+    "@types/luxon": "^2.3.1",
     "@types/node": "17.0.23",
     "@types/react": "18.0.0",
     "@types/react-dom": "18.0.0",
