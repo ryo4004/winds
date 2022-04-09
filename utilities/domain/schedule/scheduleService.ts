@@ -43,6 +43,26 @@ class PracticeSchedule {
   }
 
   /**
+   * 練習場所を返す
+   */
+  getPlace() {
+    const {
+      schedule: { place },
+    } = this
+    return place
+  }
+
+  /**
+   * 練習スタジオを返す
+   */
+  getStudio() {
+    const {
+      schedule: { studio },
+    } = this
+    return studio
+  }
+
+  /**
    * 練習のメモを返す
    */
   getMemo() {

@@ -24,11 +24,11 @@ type Next = {
   date: string
   weekjp: string
   weeken: string
-  place: string
   time: {
     start: string
     end: string
   }
+  place: string
   studio: string
   memo: string | false
 }
@@ -37,11 +37,11 @@ export type ApiScheduleItem = {
   date: string
   weekjp: string
   weeken: string
-  place: string
   time: {
     start: string
     end: string
   }
+  place: string
   studio: string
   memo: string | false
 }
@@ -49,5 +49,7 @@ export type ApiScheduleItem = {
 export type ScheduleItem = {
   startAt: DateTime
   endAt: DateTime
+  place: string
+  studio: string
   memo: string
 }

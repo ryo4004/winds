@@ -43,6 +43,8 @@ const createScheduleItem = (item: ApiScheduleItem): PracticeScheduleItem => {
   return createPracticeSchedule({
     startAt: DateTime.fromISO(startAt),
     endAt: DateTime.fromISO(endAt),
+    place: item.place,
+    studio: item.studio,
     memo: item.memo || '',
   })
 }
