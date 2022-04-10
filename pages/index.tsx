@@ -7,6 +7,7 @@ import { Introduction } from '../components/index/Introduction'
 import { Concert } from '../components/index/Concert'
 import { Schedule } from '../components/index/Schedule'
 import { Contact } from '../components/index/Contact'
+import { Footer } from '../components/Footer/Footer'
 
 import styles from '../styles/index.module.scss'
 
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
         <Schedule />
         <Contact />
       </div>
+      <Footer />
     </>
   )
 }
