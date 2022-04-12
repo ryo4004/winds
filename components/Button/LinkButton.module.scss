@@ -1,0 +1,35 @@
+.button {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 8px 12px;
+  border: 0.55px solid #666;
+  font-size: 16px;
+  color: #333;
+  background: rgba(0, 0, 0, 0);
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: all ease-in-out 0.1s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    .text {
+      margin: 0 36px;
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .link-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #666;
+    }
+  }
+}
