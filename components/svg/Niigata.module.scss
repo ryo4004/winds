@@ -23,14 +23,14 @@ svg.japan-map {
     opacity: 0.8;
   }
 
-  path#niigata {
+  path.niigata {
     stroke: #ccc;
     // fill: rgba(255,255,255,.6);
     // fill: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     fill: #efefef;
   }
 
-  g#svg-horn {
+  g.svg-horn {
     transform: translate(368px, 353px) scale(0.5);
     path {
       stroke: none;
