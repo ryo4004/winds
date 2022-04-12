@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 
 import { Niigata } from '../svg/Niigata'
+import { LinkButton } from '../Button/LinkButton'
 
 import styles from './Introduction.module.scss'
 
@@ -18,14 +19,7 @@ export const Introduction = () => {
           <div className="text">
             <p>ザ・ウィンド・アンサンブルは、新潟県長岡市を中心に活動している社会人吹奏楽団です。</p>
           </div>
-          <a href="#" className={classNames('button', styles.button)}>
-            <div>
-              <div className="text">More</div>
-              <div className="link-arrow">
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            </div>
-          </a>
+          <LinkButton href="/about" />
         </div>
       </div>
     </div>

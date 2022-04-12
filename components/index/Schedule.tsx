@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 
 import { useSchedule } from '../../utilities/hooks/useSchedule'
+import { LinkButton } from '../Button/LinkButton'
 
 import styles from './Schedule.module.scss'
 
@@ -19,14 +20,7 @@ export const Schedule = () => {
           <p>本番が近くなると、第1スタジオやコンサートホールなどを利用します。</p>
         </div>
         <ScheduleNext />
-        <a href="schedule" className="button">
-          <div>
-            <div className={styles.text}>More</div>
-            <div className={styles['link-arrow']}>
-              <i className="fas fa-chevron-right"></i>
-            </div>
-          </div>
-        </a>
+        <LinkButton href="/schedule" />
       </div>
     </div>
   )

@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 
+import { LinkButton } from '../Button/LinkButton'
+
 import styles from './Concert.module.scss'
 
 export const Concert = () => {
@@ -19,14 +21,7 @@ export const Concert = () => {
               お気軽に<a href="contact">お問い合わせ</a>ください。
             </p>
           </div>
-          <a href="history" className={classNames('button', styles.button)}>
-            <div>
-              <div className="text">過去の演奏会</div>
-              <div className={styles['link-arrow']}>
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            </div>
-          </a>
+          <LinkButton href="/history" label="過去の演奏会" />
         </div>
       </div>
 
