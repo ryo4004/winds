@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import { FaChevronRight } from 'react-icons/fa'
+import classNames from 'classnames'
 
 import { Logo } from '../components/svg/Logo'
 import { Footer } from '../components/Footer/Footer'
+
+import styles from '../styles/about.module.scss'
 
 const About = () => {
   return (
@@ -26,11 +29,11 @@ const About = () => {
         </div>
       </div>
 
-      <div className="block introduction" id="introduction">
+      <div className="block">
         <div className="title">
           <h2 data-subttl="The Wind Ensemble">ウィンズについて</h2>
         </div>
-        <div className="contents">
+        <div className={classNames('contents', styles.contents)}>
           <div className="text">
             <p>
               ザ・ウィンド・アンサンブル(ウィンズ)は、新潟県長岡市を活動拠点とした社会人吹奏楽団です。
@@ -46,11 +49,11 @@ const About = () => {
         </div>
       </div>
 
-      <div className="block location" id="location">
+      <div className={classNames('block', styles.location)}>
         <div className="title">
           <h2 data-subttl="Location">活動拠点</h2>
         </div>
-        <div className="contents">
+        <div className={classNames('contents', styles.contents)}>
           <div className="text">
             <p>
               ウィンズは新潟県長岡市に位置する
@@ -65,7 +68,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="block recruit" id="recruit">
+      <div className="block">
         <div className="title">
           <h2 data-subttl="Recruit">会員募集</h2>
         </div>
