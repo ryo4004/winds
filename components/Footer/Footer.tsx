@@ -3,11 +3,20 @@ import { DateTime } from 'luxon'
 
 import { Logo } from '../svg/Logo'
 import { ScrollTop } from './ScrollTop/ScrollTop'
+import { BackToHome } from './BackToHome/BackToHome'
 
-export const Footer = () => {
+export const Footer = ({ isHome }: { isHome: boolean }) => {
   return (
     <>
-      <ScrollTop />
+      <div className="block back-navigation">
+        {isHome && <ScrollTop />}
+        {!isHome && (
+          <div>
+            <BackToHome />
+            <ScrollTop />
+          </div>
+        )}
+      </div>
       <footer>
         <div>
           <div className="author">
