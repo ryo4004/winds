@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <Schedule />
         <Contact />
       </div>
-      <Footer />
+      <Footer isHome={true} />
     </>
   )
 }

@@ -82,24 +82,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="block back-navigation">
-        <div>
-          <div>
-            <a href="/">
-              <i className="fas fa-chevron-left"></i>
-              <span>ホームへ戻る</span>
-            </a>
-          </div>
-          <div className="scrollTop">
-            <div id="scrollTop">
-              <i className="fas fa-chevron-up"></i>
-              <span>トップへ</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Footer />
+      <Footer isHome={false} />
     </>
   )
 }
