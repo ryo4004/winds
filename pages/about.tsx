@@ -3,6 +3,7 @@ import { FaChevronRight } from 'react-icons/fa'
 import classNames from 'classnames'
 
 import { Logo } from '../components/svg/Logo'
+import { Header } from '../components/Header/Header'
 import { Footer } from '../components/Footer/Footer'
 
 import styles from '../styles/about.module.scss'
@@ -10,13 +11,7 @@ import styles from '../styles/about.module.scss'
 const About = () => {
   return (
     <>
-      <header id="top">
-        <section id="main-logo">
-          <Link href="/">
-            <Logo />
-          </Link>
-        </section>
-      </header>
+      <Header />
 
       <div className="top-title">
         <div>
