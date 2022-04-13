@@ -1,8 +1,10 @@
+import classNames from 'classnames'
+
 import styles from './Logo.module.scss'
 
-export const Logo = () => {
+export const Logo = ({ isAnimate }: { isAnimate?: boolean }) => {
   return (
-    <svg viewBox="0 0 271.828 30.001" className={styles.logo}>
+    <svg viewBox="0 0 271.828 30.001" className={classNames(styles.logo, isAnimate && styles.animate)}>
       <defs>
         <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
           <stop offset="0%" stopColor="#612200" stopOpacity="1"></stop>

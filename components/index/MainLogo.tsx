@@ -8,7 +8,7 @@ export const MainLogo = ({ showConcertGuide }: { showConcertGuide: boolean }) =>
   return (
     <section className={styles['main-logo']}>
       <main className={styles['before-direct-link']}>
-        <Logo />
+        <Logo isAnimate={true} />
       </main>
       {showConcertGuide && <DirectLink />}
     </section>

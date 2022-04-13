@@ -1,9 +1,9 @@
-svg.logo {
+.logo {
   width: 80%;
   max-width: 450px;
   fill: #fff;
 
-  path {
+  &.animate path {
     fill-opacity: 0;
     stroke: #fff;
     stroke-opacity: 0;
