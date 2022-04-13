@@ -2,11 +2,24 @@ import classNames from 'classnames'
 
 import styles from './Logo.module.scss'
 
-export const Logo = ({ isAnimate, isHeaderLink }: { isAnimate?: boolean; isHeaderLink?: boolean }) => {
+export const Logo = ({
+  isAnimate,
+  isHeaderLink,
+  isFooterLink,
+}: {
+  isAnimate?: boolean
+  isHeaderLink?: boolean
+  isFooterLink?: boolean
+}) => {
   return (
     <svg
       viewBox="0 0 271.828 30.001"
-      className={classNames(styles.logo, isAnimate && styles.animate, isHeaderLink && styles.link)}
+      className={classNames(
+        styles.logo,
+        isAnimate && styles.animate,
+        isHeaderLink && styles.header,
+        isFooterLink && styles.footer
+      )}
     >
       <defs>
         <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">

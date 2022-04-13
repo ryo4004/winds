@@ -40,11 +40,18 @@
     }
   }
 
-  &.link {
+  &.header {
     fill: rgba(204, 148, 37, 1);
 
     &:hover {
       fill: rgba(204, 148, 37, 0.8);
     }
+  }
+
+  &.footer {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    fill: #666;
   }
 }

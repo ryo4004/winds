@@ -1,14 +1,17 @@
 import Link from 'next/link'
 import { DateTime } from 'luxon'
+import classNames from 'classnames'
 
 import { Logo } from '../svg/Logo'
 import { ScrollTop } from './ScrollTop/ScrollTop'
 import { BackToHome } from './BackToHome/BackToHome'
 
+import styles from './Footer.module.scss'
+
 export const Footer = ({ isHome }: { isHome: boolean }) => {
   return (
     <>
-      <div className="block back-navigation">
+      <div className={classNames('block', styles['block back-navigation'])}>
         {isHome && <ScrollTop />}
         {!isHome && (
           <div>
@@ -17,15 +20,15 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
           </div>
         )}
       </div>
-      <footer>
+      <footer className={styles.footer}>
         <div>
-          <div className="author">
+          <div className={styles.author}>
             <Link href="/">
-              <Logo />
+              <Logo isFooterLink={true} />
             </Link>
             <small>&copy; The Wind Ensemble 1985-{DateTime.now().toFormat('yyyy')} All Rights Reserved.</small>
           </div>
-          <div className="link">
+          <div className={styles.link}>
             <ul>
               <li>
                 <a href="https://member.winds-n.com">会員専用ページ</a>
