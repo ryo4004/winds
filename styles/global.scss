@@ -19,30 +19,6 @@ body {
   color: #333;
 }
 
-header#top {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-
-  section#main-logo {
-    margin: 24px;
-
-    a {
-      svg#svg-logo {
-        width: 80%;
-        max-width: 450px;
-        fill: rgba(204, 148, 37, 1);
-      }
-
-      &:hover {
-        svg#svg-logo {
-          fill: rgba(204, 148, 37, 0.8);
-        }
-      }
-    }
-  }
-}
-
 .top-title {
   padding: 24px 0 48px;
 

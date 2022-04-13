@@ -8,7 +8,7 @@ export const Header = () => {
     <header className={styles.header}>
       <section className={styles['main-logo']}>
         <Link href="/">
-          <Logo />
+          <Logo isHeaderLink={true} />
         </Link>
       </section>
     </header>
