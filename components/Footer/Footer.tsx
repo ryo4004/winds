@@ -13,7 +13,7 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
     <>
       <div className={classNames('block', styles['block back-navigation'])}>
         <div className={styles['back-navigation']}>
-          {isHome && <ScrollTop />}
+          {isHome && <ScrollTop isHome={true} />}
           {!isHome && (
             <>
               <BackToHome />

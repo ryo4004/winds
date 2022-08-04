@@ -1,5 +1,8 @@
 .index {
-  & > div {
+  &.home {
+    margin-left: auto;
+  }
+  .scroll-top {
     padding: 8px 12px;
     border-width: 0.55px;
     border-style: solid;
