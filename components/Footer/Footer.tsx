@@ -11,14 +11,8 @@ import styles from './Footer.module.scss'
 export const Footer = ({ isHome }: { isHome: boolean }) => {
   return (
     <>
-      <div className={classNames('block', styles['block back-navigation'])}>
-        {isHome && <ScrollTop />}
-        {!isHome && (
-          <div>
-            <BackToHome />
-            <ScrollTop />
-          </div>
-        )}
+      <div className={classNames('block', styles['block'])}>
+        <BackNavigation isHome={isHome} />
       </div>
       <footer className={styles.footer}>
         <div>
@@ -41,5 +35,19 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
         </div>
       </footer>
     </>
+  )
+}
+
+const BackNavigation = ({ isHome }: { isHome: boolean }) => {
+  return (
+    <div className={styles['back-navigation']}>
+      {isHome && <ScrollTop isHome={true} />}
+      {!isHome && (
+        <>
+          <BackToHome />
+          <ScrollTop />
+        </>
+      )}
+    </div>
   )
 }
