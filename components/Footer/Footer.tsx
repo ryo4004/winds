@@ -12,13 +12,15 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
   return (
     <>
       <div className={classNames('block', styles['block back-navigation'])}>
-        {isHome && <ScrollTop />}
-        {!isHome && (
-          <div>
-            <BackToHome />
-            <ScrollTop />
-          </div>
-        )}
+        <div className={styles['back-navigation']}>
+          {isHome && <ScrollTop />}
+          {!isHome && (
+            <>
+              <BackToHome />
+              <ScrollTop />
+            </>
+          )}
+        </div>
       </div>
       <footer className={styles.footer}>
         <div>

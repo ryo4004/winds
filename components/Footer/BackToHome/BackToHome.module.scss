@@ -1,5 +1,5 @@
 .index {
-  & > div {
+  a {
     padding: 8px 12px;
     border-width: 0.55px;
     border-style: solid;
@@ -9,14 +9,11 @@
     text-decoration: none;
     color: #333;
     background: rgba(0, 0, 0, 0);
-    cursor: pointer;
     transition: all ease-in-out 0.1s;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    user-select: none;
 
     &:hover {
       background: rgba(0, 0, 0, 0.1);
