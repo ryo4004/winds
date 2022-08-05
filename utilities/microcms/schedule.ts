@@ -20,25 +20,25 @@ export type ScheduleApi = {
 }
 
 export type Schedule = {
-  date: DateTime
+  date: string
   place: Place
   studio: Array<Studio>
-  start: DateTime
-  end: DateTime
+  start: string
+  end: string
 }
 
-export const convertScheduleList = (scheduleApi: Array<ScheduleApi>) => {
+export const convertScheduleList = (scheduleApi: Array<ScheduleApi>): Array<Schedule> => {
   return scheduleApi.map(convertSchedule).sort((a, b) => (a.date > b.date ? 1 : -1))
 }
 
 const convertSchedule = (scheduleApi: ScheduleApi): Schedule => {
   const { start, end } = calcTimeDivision(DateTime.fromISO(scheduleApi.date), scheduleApi.timeDivision)
   return {
-    date: DateTime.fromISO(scheduleApi.date),
+    date: DateTime.fromISO(scheduleApi.date).toJSON(),
     place: scheduleApi.place.length === 0 ? '長岡リリックホール' : scheduleApi.place[0],
     studio: scheduleApi.studio,
-    start,
-    end,
+    start: start.toJSON(),
+    end: end.toJSON(),
   }
 }
 
