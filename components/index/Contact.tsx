@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import classNames from 'classnames'
+import { Block } from '../Layout/Block'
+import { Text } from '../Layout/Text'
 
 import styles from './Contact.module.scss'
 
@@ -9,17 +10,12 @@ export const Contact = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   return (
-    <div className={classNames('block', styles.contact)}>
-      <div className="title">
-        <h2 className="title-large" data-subttl="Contact">
-          お問い合わせ
-        </h2>
-      </div>
-      <div className={styles.contents}>
-        <div className={styles.text}>
+    <div className={styles.contact}>
+      <Block title="お問い合わせ" subTitle="Contact">
+        <Text>
           <p>ザ・ウィンド・アンサンブルに関するご意見、ご質問、メッセージ等お気軽にお問い合わせください。</p>
           <p>また、出張、依頼演奏などもこちらから受け付けております。</p>
-        </div>
+        </Text>
         <form method="post" action="contact" id="contact-form">
           <label>
             <span>お名前</span>
@@ -63,7 +59,7 @@ export const Contact = () => {
             確認
           </button>
         </form>
-      </div>
+      </Block>
     </div>
   )
 }

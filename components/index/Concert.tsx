@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 
 import { LinkButton } from '../Button/LinkButton'
+import { Block } from '../Layout/Block'
+import { Text } from '../Layout/Text'
 
 import styles from './Concert.module.scss'
 
@@ -8,25 +10,20 @@ export const Concert = () => {
   return (
     <>
       <div className={classNames('block', styles.concert)}>
-        <div className="title">
-          <h2 className="title-large" data-subttl="Concert">
-            演奏会
-          </h2>
-        </div>
-        <div className={classNames('contents', styles.contents)}>
-          <div className="text">
+        <Block title="演奏会" subTitle="Concert">
+          <Text>
             <p>ザ・ウィンド・アンサンブルは年2回、演奏会を主催しております。</p>
             <p>これらの演奏会の他に出張依頼演奏も随時受け付けております。</p>
             <p>
               お気軽に<a href="contact">お問い合わせ</a>ください。
             </p>
-          </div>
+          </Text>
           <LinkButton href="/history" label="過去の演奏会" />
-        </div>
+        </Block>
       </div>
 
       <div className={classNames('home-block', styles['concert-introduction'])}>
-        <div className={classNames('contents', styles.contents)}>
+        <div className={classNames(styles.contents)}>
           <div className={styles['concert-box']}>
             <div className={styles['main-concert']}>
               <div className={styles.content}>
@@ -39,16 +36,6 @@ export const Concert = () => {
                   </p>
                 </div>
                 <ul>
-                  {/* <li>
-                  <a href='#' className='prepare'>
-                    <div className='concert-detail'>
-                      <div><p>2019年10月13日(日)</p><h3>第32回定期演奏会</h3></div>
-                      <div className='link-arrow'><i className="fas fa-chevron-right"></i></div>
-                    </div>
-                    <div className='concert-prepare'>準備中</div>
-                    <div className='concert-close'>終了しました</div>
-                  </a>
-                </li> */}
                   <li>
                     <a href="34thconcert" className={styles.close}>
                       <div className={styles['concert-detail']}>
