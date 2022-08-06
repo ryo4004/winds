@@ -2,6 +2,10 @@ name: Next.js CI
 
 on: [push, pull_request]
 
+env:
+  NEXT_SECRET_MICROCMS_TOKEN: ${{ secrets.NEXT_SECRET_MICROCMS_TOKEN }}
+  NEXT_MICROCMS_SERVICE_DOMAIN: ${{ secrets.NEXT_MICROCMS_SERVICE_DOMAIN }}
+
 jobs:
   build:
 
