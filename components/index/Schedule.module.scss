@@ -3,14 +3,6 @@
   border: none;
   background: rgb(239, 234, 227);
 
-  h2.title-large {
-    font-size: 2.4rem;
-
-    &::before {
-      font-size: 1.2rem;
-    }
-  }
-
   .contents {
     .schedule-next {
       display: block;

@@ -3,26 +3,23 @@ import { DateTime } from 'luxon'
 
 import type { Schedule } from '../../utilities/microcms/schedule'
 import { LinkButton } from '../Button/LinkButton'
+import { Block } from '../Layout/Block'
+import { Text } from '../Layout/Text'
 
 import styles from './Schedule.module.scss'
 
 export const ScheduleComponent = ({ schedule }: { schedule: Schedule[] }) => {
   return (
-    <div className={classNames('block', styles.schedule)}>
-      <div className="title">
-        <h2 className="title-large" data-subttl="Schedule">
-          練習日程
-        </h2>
-      </div>
-      <div className={styles.contents}>
-        <div className={styles.text}>
+    <div className={styles.schedule}>
+      <Block title="練習日程" subTitle="Schedule">
+        <Text>
           <p>主に長岡リリックホールのスタジオにて練習しております。</p>
           <p>基本的に第5スタジオにて毎週土曜日18時から22時まで合奏や個人練習しています。</p>
           <p>本番が近くなると、第1スタジオやコンサートホールなどを利用します。</p>
-        </div>
+        </Text>
         {schedule.length !== 0 && <ScheduleNext next={schedule[0]} />}
         <LinkButton href="/schedule" />
-      </div>
+      </Block>
     </div>
   )
 }

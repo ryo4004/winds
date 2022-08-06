@@ -58,67 +58,8 @@ a.button {
   }
 }
 
-.block {
-  width: 100%;
-  // border-top: .55px solid #eee;
-
-  & > div {
-    width: 100%;
-    max-width: 800px;
-    margin: 48px auto;
-    padding: 0 24px;
-    box-sizing: border-box;
-
-    &:first-child {
-    }
-
-    &:last-child {
-      padding-bottom: 48px;
-    }
-  }
-
-  .title {
-    h1,
-    h2 {
-      display: block;
-
-      font-size: 2rem;
-      font-weight: normal;
-
-      &::before {
-        content: attr(data-subttl) '';
-        display: block;
-        font-size: 1rem;
-        color: #666;
-      }
-    }
-  }
-
-  .contents {
-    margin: 48px auto 0;
-
-    .text {
-      font-size: 16px;
-      line-height: 2;
-
-      a {
-        text-decoration: none;
-        color: #b60005;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      i {
-        text-indent: 0;
-      }
-    }
-
-    a.button {
-      margin-top: 24px;
-    }
-  }
+a.button {
+  margin-top: 24px;
 }
 
 .block.back-navigation {
