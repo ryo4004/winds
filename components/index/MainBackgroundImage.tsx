@@ -42,7 +42,7 @@ export const MainBackgroundImage = () => {
       }
     }, 15000) // CSS animationが30sなのでその半分を指定
     return () => clearInterval(interval)
-  }, [count, backgroundPhotoStyleList])
+  }, [count])
 
   return (
     <section className={styles.background}>
