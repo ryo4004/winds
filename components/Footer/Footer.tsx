@@ -17,8 +17,10 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
       <footer className={styles.footer}>
         <div>
           <div className={styles.author}>
-            <Link href="/">
-              <Logo isFooterLink={true} />
+            <Link href="/" passHref>
+              <a>
+                <Logo isFooterLink={true} />
+              </a>
             </Link>
             <small>&copy; The Wind Ensemble 1985-{DateTime.now().toFormat('yyyy')} All Rights Reserved.</small>
           </div>

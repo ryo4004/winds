@@ -7,8 +7,10 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <section className={styles['main-logo']}>
-        <Link href="/">
-          <Logo isHeaderLink={true} />
+        <Link href="/" passHref>
+          <a>
+            <Logo isHeaderLink={true} />
+          </a>
         </Link>
       </section>
     </header>
