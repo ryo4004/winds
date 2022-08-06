@@ -1,2 +1,37 @@
 .block {
+  width: 100%;
+
+  .title,
+  .contents {
+    width: 100%;
+    max-width: 800px;
+    margin: 48px auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+
+    &:last-child {
+      padding-bottom: 48px;
+    }
+  }
+
+  .title {
+    h1,
+    h2 {
+      display: block;
+
+      font-size: 2rem;
+      font-weight: normal;
+
+      &::before {
+        content: attr(data-subttl) '';
+        display: block;
+        font-size: 1rem;
+        color: #666;
+      }
+    }
+  }
+
+  .contents {
+    margin: 48px auto 0;
+  }
 }
