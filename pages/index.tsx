@@ -13,11 +13,12 @@ import { getAllContents, getContents } from './api/api'
 import styles from '../styles/index.module.scss'
 
 import type { GetStaticProps } from 'next'
+import { convertContents } from '../utilities/microcms/contents'
+import type { Contents, ContentsApi } from '../utilities/microcms/contents'
 import { convertScheduleList } from '../utilities/microcms/schedule'
 import type { Schedule, ScheduleApi } from '../utilities/microcms/schedule'
-import type { Contents } from '../utilities/microcms/contents'
 
-const Home = ({ schedule, contents }: { schedule: Array<Schedule>; contents: Contents }) => {
+const Home = ({ contents, schedule }: { contents: Contents; schedule: Array<Schedule> }) => {
   console.log(contents)
   return (
     <>
@@ -40,12 +41,12 @@ const Home = ({ schedule, contents }: { schedule: Array<Schedule>; contents: Con
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const contentsResponse = await getContents<ContentsApi>('contents')
   const scheduleResponse = await getAllContents<ScheduleApi>('schedule')
-  const contentsResponse = await getContents('contents')
-  if (!scheduleResponse || !contentsResponse) {
+  if (!contentsResponse || !scheduleResponse) {
     return { notFound: true }
   }
-  return { props: { schedule: convertScheduleList(scheduleResponse), contents: contentsResponse } }
+  return { props: { contents: convertContents(contentsResponse), schedule: convertScheduleList(scheduleResponse) } }
 }
 
 export default Home
