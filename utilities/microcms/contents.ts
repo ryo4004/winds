@@ -7,7 +7,7 @@ export type DirectLink = {
   url: string
 }
 
-type News = {
+export type News = {
   fieldId: 'news'
   date: string
   label: string

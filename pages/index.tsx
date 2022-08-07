@@ -2,7 +2,7 @@ import { MainBackgroundImage } from '../components/index/MainBackgroundImage'
 import { MainLogo } from '../components/index/MainLogo'
 import { Quote } from '../components/index/Quote'
 import { ScrollGuide } from '../components/index/ScrollGuide'
-import { News } from '../components/index/News'
+import { NewsComponent } from '../components/index/News'
 import { Introduction } from '../components/index/Introduction'
 import { Concert } from '../components/index/Concert'
 import { ScheduleComponent } from '../components/index/Schedule'
@@ -28,7 +28,7 @@ const Home = ({ contents, schedule }: { contents: Contents; schedule: Array<Sche
         <ScrollGuide />
       </header>
       <div>
-        <News />
+        <NewsComponent news={contents.news} />
         <Introduction />
         <Concert />
         <ScheduleComponent schedule={schedule} />
