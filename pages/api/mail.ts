@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createTransport } from 'nodemailer'
 import type { MailForm } from '../../utilities/mail/mail'
+import { createRecievedMessage, createNoticeMessage } from '../../utilities/mail/mail'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const body: MailForm = req.body
@@ -15,10 +16,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   await transporter.sendMail({
-    from: process.env.MAIL_FROM,
+    from: `ザ・ウィンド・アンサンブル<${process.env.MAIL_FROM}>`,
     to: body.email,
-    subject: 'お問い合わせ',
-    text: body.message,
+    subject: '【ウィンズより】お問い合わせを受け付けました',
+    text: createRecievedMessage(body),
+  })
+
+  await transporter.sendMail({
+    from: `ザ・ウィンド・アンサンブル<${process.env.MAIL_FROM}>`,
+    to: process.env.MAIL_FROM,
+    subject: '【winds-n.com】サイトにてお問い合わせがありました',
+    text: createNoticeMessage(body),
   })
 
   res.status(200)
