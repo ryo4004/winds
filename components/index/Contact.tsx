@@ -1,14 +1,12 @@
-import { useState } from 'react'
-
 import { Block } from '../Layout/Block'
 import { Text } from '../Layout/Text'
 
 import styles from './Contact.module.scss'
 
+import { useMail } from '../../utilities/hooks/useMail'
+
 export const Contact = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  const { name, email, message, updateForm, send } = useMail()
   return (
     <div className={styles.contact}>
       <Block title="お問い合わせ" subTitle="Contact">
@@ -23,7 +21,7 @@ export const Contact = () => {
               type="text"
               name="name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => updateForm('name', e.target.value)}
               className={styles.name}
               id="form-name"
               required={true}
@@ -37,7 +35,7 @@ export const Contact = () => {
               autoCapitalize="off"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => updateForm('email', e.target.value)}
               className={styles.email}
               placeholder="連絡可能なメールアドレスを入力してください"
               id="form-email"
@@ -49,13 +47,13 @@ export const Contact = () => {
             <textarea
               name="message"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => updateForm('message', e.target.value)}
               className={styles.text}
               id="form-message"
               required={true}
             />
           </label>
-          <button type="submit" name="send" className={styles.sendbutton} value="send">
+          <button type="submit" name="send" className={styles.sendbutton} value="send" onClick={send}>
             確認
           </button>
         </form>
