@@ -1,6 +1,6 @@
 import type { MicroCMSApi } from './api'
 
-type DirectLink = {
+export type DirectLink = {
   fieldId: 'directLink'
   active: boolean
   label: string

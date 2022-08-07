@@ -19,12 +19,11 @@ import { convertScheduleList } from '../utilities/microcms/schedule'
 import type { Schedule, ScheduleApi } from '../utilities/microcms/schedule'
 
 const Home = ({ contents, schedule }: { contents: Contents; schedule: Array<Schedule> }) => {
-  console.log(contents)
   return (
     <>
       <header className={styles.header}>
         <MainBackgroundImage />
-        <MainLogo showConcertGuide={true} />
+        <MainLogo directLink={contents.directLink} />
         <Quote />
         <ScrollGuide />
       </header>
