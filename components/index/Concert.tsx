@@ -9,6 +9,7 @@ import type { Concert } from '../../utilities/microcms/contents'
 import styles from './Concert.module.scss'
 
 export const ConcertComponent = ({ concert }: { concert: Concert }) => {
+  const today = DateTime.now()
   const { main, mini } = concert
   return (
     <>
@@ -40,9 +41,10 @@ export const ConcertComponent = ({ concert }: { concert: Concert }) => {
                 </div>
                 <ul>
                   {main.map((item, index) => {
+                    const status = DateTime.fromISO(item.date) < today ? 'close' : item.status
                     return (
                       <li key={index}>
-                        <a href={item.url} className={styles[item.status]}>
+                        <a href={item.url} className={styles[status]}>
                           <div className={styles['concert-detail']}>
                             <div>
                               <p>{DateTime.fromISO(item.date).toFormat('yyyy年M月d日')}</p>
@@ -52,8 +54,8 @@ export const ConcertComponent = ({ concert }: { concert: Concert }) => {
                               <i className="fas fa-chevron-right"></i>
                             </div>
                           </div>
-                          {item.status === 'prepare' && <div className={styles['concert-prepare']}>準備中</div>}
-                          {item.status === 'close' && <div className={styles['concert-close']}>終了しました</div>}
+                          {status === 'prepare' && <div className={styles['concert-prepare']}>準備中</div>}
+                          {status === 'close' && <div className={styles['concert-close']}>終了しました</div>}
                         </a>
                       </li>
                     )
@@ -72,9 +74,10 @@ export const ConcertComponent = ({ concert }: { concert: Concert }) => {
                 </div>
                 <ul>
                   {mini.map((item, index) => {
+                    const status = DateTime.fromISO(item.date) < today ? 'close' : item.status
                     return (
                       <li key={index}>
-                        <a href={item.url}className={styles[item.status]}>
+                        <a href={item.url} className={styles[status]}>
                           <div className={styles['concert-detail']}>
                             <div>
                               <p>{DateTime.fromISO(item.date).toFormat('yyyy年M月d日')}</p>
@@ -84,8 +87,8 @@ export const ConcertComponent = ({ concert }: { concert: Concert }) => {
                               <i className="fas fa-chevron-right"></i>
                             </div>
                           </div>
-                          {item.status === 'prepare' && <div className={styles['concert-prepare']}>準備中</div>}
-                          {item.status === 'close' && <div className={styles['concert-close']}>終了しました</div>}
+                          {status === 'prepare' && <div className={styles['concert-prepare']}>準備中</div>}
+                          {status === 'close' && <div className={styles['concert-close']}>終了しました</div>}
                         </a>
                       </li>
                     )
