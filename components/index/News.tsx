@@ -1,28 +1,26 @@
 import { Block } from '../Layout/Block'
+import type { News } from '../../utilities/microcms/contents'
 
 import styles from './News.module.scss'
+import { DateTime } from 'luxon'
 
-export const News = () => {
+export const NewsComponent = ({ news }: { news: News[] }) => {
   return (
     <div className={styles.news}>
       <Block title="お知らせ" subTitle="News">
-        <div className="contents">
-          <div className={styles['news-list']}>
-            <ol>
-              <li>
-                <a href="#">
-                  <div>2022/1/1</div>
-                  <p>お知らせのタイトル</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div>2021/12/31</div>
-                  <p>お知らせのタイトル</p>
-                </a>
-              </li>
-            </ol>
-          </div>
+        <div className={styles['news-list']}>
+          <ol>
+            {news.map((item, index) => {
+              return (
+                <li key={index}>
+                  <a href={item.url}>
+                    <div>{DateTime.fromISO(item.date).toFormat('yyyy/M/d')}</div>
+                    <p>{item.label}</p>
+                  </a>
+                </li>
+              )
+            })}
+          </ol>
         </div>
       </Block>
     </div>
