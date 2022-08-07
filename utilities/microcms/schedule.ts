@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon'
+import type { MicroCMSApi } from './api'
 
 type Place = '長岡リリックホール'
 
@@ -7,17 +8,13 @@ type Studio = `第${StudioNumber}スタジオ`
 
 type TimeDivision = '午前' | '午後' | '夜間'
 
-export type ScheduleApi = {
+export type ScheduleApi = MicroCMSApi<{
   id: string
-  createdAt: string
-  updatedAt: string
-  publishedAt: string
-  revisedAt: string
   date: string
   place: Array<Place>
   studio: Array<Studio>
   timeDivision: Array<TimeDivision>
-}
+}>
 
 export type Schedule = {
   date: string
