@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
 
+DateTime.local().setZone('Asia/Tokyo')
+
 export type MailForm = {
   name: string
   email: string
