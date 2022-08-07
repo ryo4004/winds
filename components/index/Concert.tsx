@@ -1,12 +1,15 @@
 import classNames from 'classnames'
+import { DateTime } from 'luxon'
 
 import { LinkButton } from '../Button/LinkButton'
 import { Block } from '../Layout/Block'
 import { Text } from '../Layout/Text'
+import type { Concert } from '../../utilities/microcms/contents'
 
 import styles from './Concert.module.scss'
 
-export const Concert = () => {
+export const ConcertComponent = ({ concert }: { concert: Concert }) => {
+  const { main, mini } = concert
   return (
     <>
       <div className={classNames('block', styles.concert)}>
@@ -36,36 +39,25 @@ export const Concert = () => {
                   </p>
                 </div>
                 <ul>
-                  <li>
-                    <a href="34thconcert" className={styles.close}>
-                      <div className={styles['concert-detail']}>
-                        <div>
-                          <p>2021年10月10日(日)</p>
-                          <h3>第34回定期演奏会</h3>
-                        </div>
-                        <div className={styles['link-arrow']}>
-                          <i className="fas fa-chevron-right"></i>
-                        </div>
-                      </div>
-                      <div className={styles['concert-prepare']}>準備中</div>
-                      <div className={styles['concert-close']}>終了しました</div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="33rdconcert" className={styles.close}>
-                      <div className={styles['concert-detail']}>
-                        <div>
-                          <p>2020年10月11日(日)</p>
-                          <h3>第33回定期演奏会</h3>
-                        </div>
-                        <div className={styles['link-arrow']}>
-                          <i className="fas fa-chevron-right"></i>
-                        </div>
-                      </div>
-                      <div className={styles['concert-prepare']}>準備中</div>
-                      <div className={styles['concert-close']}>終了しました</div>
-                    </a>
-                  </li>
+                  {main.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <a href={item.url} className={styles[item.status]}>
+                          <div className={styles['concert-detail']}>
+                            <div>
+                              <p>{DateTime.fromISO(item.date).toFormat('yyyy年M月d日')}</p>
+                              <h3>{item.title}</h3>
+                            </div>
+                            <div className={styles['link-arrow']}>
+                              <i className="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          {item.status === 'prepare' && <div className={styles['concert-prepare']}>準備中</div>}
+                          {item.status === 'close' && <div className={styles['concert-close']}>終了しました</div>}
+                        </a>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>
@@ -79,36 +71,25 @@ export const Concert = () => {
                   <p>春に開催するミニコンサートでは、アニメソングやポップス、映画音楽などをメインに演奏いたします。</p>
                 </div>
                 <ul>
-                  <li>
-                    <a href="mini2022">
-                      <div className={styles['concert-detail']}>
-                        <div>
-                          <p>2022年5月7日</p>
-                          <h3>春のミニコンサート</h3>
-                        </div>
-                        <div className={styles['link-arrow']}>
-                          <i className="fas fa-chevron-right"></i>
-                        </div>
-                      </div>
-                      <div className={styles['concert-prepare']}>準備中</div>
-                      <div className={styles['concert-close']}>終了しました</div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mini2021" className={styles.close}>
-                      <div className={styles['concert-detail']}>
-                        <div>
-                          <p>2021年5月8日</p>
-                          <h3>春のミニコンサート</h3>
-                        </div>
-                        <div className={styles['link-arrow']}>
-                          <i className="fas fa-chevron-right"></i>
-                        </div>
-                      </div>
-                      <div className={styles['concert-prepare']}>準備中</div>
-                      <div className={styles['concert-close']}>終了しました</div>
-                    </a>
-                  </li>
+                  {mini.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <a href={item.url}className={styles[item.status]}>
+                          <div className={styles['concert-detail']}>
+                            <div>
+                              <p>{DateTime.fromISO(item.date).toFormat('yyyy年M月d日')}</p>
+                              <h3>{item.title}</h3>
+                            </div>
+                            <div className={styles['link-arrow']}>
+                              <i className="fas fa-chevron-right"></i>
+                            </div>
+                          </div>
+                          {item.status === 'prepare' && <div className={styles['concert-prepare']}>準備中</div>}
+                          {item.status === 'close' && <div className={styles['concert-close']}>終了しました</div>}
+                        </a>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </div>

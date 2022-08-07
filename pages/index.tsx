@@ -4,7 +4,7 @@ import { Quote } from '../components/index/Quote'
 import { ScrollGuide } from '../components/index/ScrollGuide'
 import { NewsComponent } from '../components/index/News'
 import { Introduction } from '../components/index/Introduction'
-import { Concert } from '../components/index/Concert'
+import { ConcertComponent } from '../components/index/Concert'
 import { ScheduleComponent } from '../components/index/Schedule'
 import { Contact } from '../components/index/Contact'
 import { Footer } from '../components/Footer/Footer'
@@ -30,7 +30,7 @@ const Home = ({ contents, schedule }: { contents: Contents; schedule: Array<Sche
       <div>
         <NewsComponent news={contents.news} />
         <Introduction />
-        <Concert />
+        <ConcertComponent concert={contents.concert} />
         <ScheduleComponent schedule={schedule} />
         <Contact />
       </div>
