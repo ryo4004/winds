@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { DateTime } from 'luxon'
 
-import type { Schedule } from '../../utilities/microcms/schedule'
+import { Schedule, splitByToday } from '../../utilities/microcms/schedule'
 import { LinkButton } from '../Button/LinkButton'
 import { Block } from '../Layout/Block'
 import { Text } from '../Layout/Text'
@@ -9,6 +9,7 @@ import { Text } from '../Layout/Text'
 import styles from './Schedule.module.scss'
 
 export const ScheduleComponent = ({ schedule }: { schedule: Schedule[] }) => {
+  const splitedSchedule = splitByToday(DateTime.now(), schedule)
   return (
     <div className={styles.schedule}>
       <Block title="練習日程" subTitle="Schedule">
@@ -17,7 +18,8 @@ export const ScheduleComponent = ({ schedule }: { schedule: Schedule[] }) => {
           <p>基本的に第5スタジオにて毎週土曜日18時から22時まで合奏や個人練習しています。</p>
           <p>本番が近くなると、第1スタジオやコンサートホールなどを利用します。</p>
         </Text>
-        {schedule.length !== 0 && <ScheduleNext next={schedule[0]} />}
+        {splitedSchedule.length !== 0 && <ScheduleNext next={splitedSchedule[0]} />}
+        {splitedSchedule.length === 0 && <div className={styles['schedule-next']}>直近の練習日程はありません</div>}
         <LinkButton href="/schedule" />
       </Block>
     </div>

@@ -32,6 +32,10 @@ export type Schedule = {
   end: string
 }
 
+export const splitByToday = (today: DateTime, schedule: Array<Schedule>) => {
+  return schedule.filter((item) => DateTime.fromISO(item.date).startOf('day') >= today.startOf('day'))
+}
+
 export const convertScheduleList = (scheduleApi: Array<ScheduleApi>): Array<Schedule> => {
   return scheduleApi.map(convertSchedule).sort((a, b) => (a.date > b.date ? 1 : -1))
 }
