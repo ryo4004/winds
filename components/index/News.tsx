@@ -2,7 +2,6 @@ import { Block } from '../Layout/Block'
 import type { News } from '../../utilities/microcms/news/news'
 
 import styles from './News.module.scss'
-import { DateTime } from 'luxon'
 
 export const NewsComponent = ({ news }: { news: News[] }) => {
   return (
@@ -14,7 +13,7 @@ export const NewsComponent = ({ news }: { news: News[] }) => {
               return (
                 <li key={index}>
                   <a href={item.url}>
-                    <div>{DateTime.fromISO(item.date).toFormat('yyyy/M/d')}</div>
+                    <div>{item.date}</div>
                     <p>{item.label}</p>
                   </a>
                 </li>
