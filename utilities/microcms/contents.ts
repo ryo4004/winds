@@ -1,6 +1,12 @@
 import type { MicroCMSApi } from './api'
 
 export type DirectLink = {
+  active: boolean
+  label: string
+  url: string
+}
+
+type DirectLinkApi = {
   fieldId: 'directLink'
   active: boolean
   label: string
@@ -8,6 +14,12 @@ export type DirectLink = {
 }
 
 export type News = {
+  date: string
+  label: string
+  url: string
+}
+
+type NewsApi = {
   fieldId: 'news'
   date: string
   label: string
@@ -50,8 +62,8 @@ type ConcertApi = {
 }
 
 export type ContentsApi = MicroCMSApi<{
-  directLink: DirectLink
-  news: Array<News>
+  directLink: DirectLinkApi
+  news: Array<NewsApi>
   concert: Array<ConcertApi>
 }>
 
@@ -63,10 +75,21 @@ export type Contents = {
 
 export const convertContents = (contentsApi: ContentsApi): Contents => {
   return {
-    directLink: contentsApi.directLink,
-    news: contentsApi.news,
+    directLink: convertDirectLink(contentsApi.directLink),
+    news: convertNews(contentsApi.news),
     concert: convertConcerts(contentsApi.concert),
   }
+}
+
+const convertDirectLink = (directLink: DirectLinkApi): DirectLink => {
+  const { fieldId, ...rest } = directLink
+  return { ...rest }
+}
+
+const convertNews = (newsApi: NewsApi[]): News[] => {
+  return newsApi
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .map((item) => ({ date: item.date, label: item.label, url: item.url }))
 }
 
 const convertConcerts = (concerts: ConcertApi[]): Concert => {
