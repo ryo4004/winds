@@ -22,8 +22,6 @@ const sendMail = async (req: NextApiRequest, res: NextApiResponse) => {
     text: createRecievedMessage(body),
   })
 
-  console.log( createNoticeMessage(body))
-
   await transporter.sendMail({
     from: `ザ・ウィンド・アンサンブル<${process.env.MAIL_FROM}>`,
     to: process.env.MAIL_FROM,
