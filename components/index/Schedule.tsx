@@ -26,11 +26,7 @@ export const ScheduleComponent = ({ schedule }: { schedule: Schedule[] }) => {
 
 const ScheduleNext = ({ next }: { next: Schedule }) => {
   const isToday = DateTime.fromISO(next.date).hasSame(DateTime.now(), 'day')
-  const nextDate = DateTime.fromISO(next.date)
-  const month = nextDate.month
-  const day = nextDate.day
-  const start = DateTime.fromISO(next.start)
-  const end = DateTime.fromISO(next.end)
+  const { month, day, weekdayJa, weekdayEn, start, end, place, studio } = next
   return (
     <div className={styles['schedule-next']}>
       <div>
@@ -42,16 +38,15 @@ const ScheduleNext = ({ next }: { next: Schedule }) => {
               <span className={classNames(styles.month, styles.text)}>月</span>
               <span className={styles.date}>{day}</span>
               <span className={classNames(styles.date, styles.text)}>日</span>
-              {/* 一時的に非表示 */}
-              {/* <span className={classNames(styles.day, styles[next.getWeekdaysEn()])}>{next.getWeekdaysJa()}</span> */}
+              <span className={classNames(styles.day, styles[weekdayEn])}>{weekdayJa}</span>
             </span>
             <span className="time">
-              {start.toFormat('H:mm')}～{end.toFormat('H:mm')}
+              {start}～{end}
             </span>
           </span>
           <span className={styles.frame}>
-            <span className={styles.place}>{next.place}</span>
-            <span className={styles.studio}>{next.studio}</span>
+            <span className={styles.place}>{place}</span>
+            <span className={styles.studio}>{studio}</span>
           </span>
         </p>
       </div>
