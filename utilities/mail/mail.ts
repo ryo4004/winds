@@ -35,7 +35,7 @@ export const createNoticeMessage = (body: MailForm) => {
   return `winds-n.com (PC) にて下記のお問い合わせがありました。
 
 受付日時: ${DateTime.now().setZone('Asia/Tokyo').toFormat('yyyy/MM/dd HH:mm')}
-返信目安: ${DateTime.now().plus({ day: 7 }).toFormat('yyyy/MM/dd HH:mm')}(一週間)
+返信目安: ${DateTime.now().setZone('Asia/Tokyo').plus({ day: 7 }).toFormat('yyyy/MM/dd HH:mm')}(一週間)
 
 アドレス確認: 送信成功
 
