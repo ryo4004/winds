@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 const CONCERT_TYPE = {
   main: '定期演奏会',
   mini: 'ミニコンサート',
@@ -17,6 +19,10 @@ type ConcertItem = {
   title: string
   url: string
   date: string
+  year: number
+  month: number
+  day: number
+  weekday: string
 }
 
 export type Concert = {
@@ -47,12 +53,19 @@ export const convertConcerts = (concerts: ConcertApi[]): Concert => {
   }
 }
 
+const weekdaysJa = ['月', '火', '水', '木', '金', '土', '日'] as const
+
 const convertConcertItem = (concert: ConcertApi): ConcertItem => {
+  const date = DateTime.fromISO(concert.date)
   return {
     status: convertConcertStatus(concert.status),
     title: concert.title,
     url: concert.url,
-    date: concert.date,
+    date: date.toJSON(),
+    year: date.year,
+    month: date.month,
+    day: date.day,
+    weekday: weekdaysJa[Number(date.toFormat('c')) - 1],
   }
 }
 

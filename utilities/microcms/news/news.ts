@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 export type News = {
   date: string
   label: string
@@ -14,5 +16,11 @@ export type NewsApi = {
 export const convertNews = (newsApi: NewsApi[]): News[] => {
   return newsApi
     .sort((a, b) => (a.date < b.date ? 1 : -1))
-    .map((item) => ({ date: item.date, label: item.label, url: item.url }))
+    .map((item) => {
+      return {
+        date: DateTime.fromISO(item.date).toFormat('yyyy/M/d'),
+        label: item.label,
+        url: item.url,
+      }
+    })
 }
