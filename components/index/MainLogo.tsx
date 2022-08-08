@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { DirectLink } from '../../utilities/microcms/contents'
+import type { DirectLink } from '../../utilities/microcms/directLink/directLink'
 
 import { Logo } from '../svg/Logo'
 

@@ -1,5 +1,5 @@
 import { Block } from '../Layout/Block'
-import type { News } from '../../utilities/microcms/contents'
+import type { News } from '../../utilities/microcms/news/news'
 
 import styles from './News.module.scss'
 import { DateTime } from 'luxon'

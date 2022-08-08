@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 import { LinkButton } from '../Button/LinkButton'
 import { Block } from '../Layout/Block'
 import { Text } from '../Layout/Text'
-import type { Concert } from '../../utilities/microcms/contents'
+import type { Concert } from '../../utilities/microcms/concert/concert'
 
 import styles from './Concert.module.scss'
 
