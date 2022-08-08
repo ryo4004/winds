@@ -1,4 +1,6 @@
 import type { MicroCMSApi } from './api'
+import type { NewsApi, News } from './news/news'
+import { convertNews } from './news/news'
 
 export type DirectLink = {
   active: boolean
@@ -9,19 +11,6 @@ export type DirectLink = {
 type DirectLinkApi = {
   fieldId: 'directLink'
   active: boolean
-  label: string
-  url: string
-}
-
-export type News = {
-  date: string
-  label: string
-  url: string
-}
-
-type NewsApi = {
-  fieldId: 'news'
-  date: string
   label: string
   url: string
 }
@@ -84,12 +73,6 @@ export const convertContents = (contentsApi: ContentsApi): Contents => {
 const convertDirectLink = (directLink: DirectLinkApi): DirectLink => {
   const { fieldId, ...rest } = directLink
   return { ...rest }
-}
-
-const convertNews = (newsApi: NewsApi[]): News[] => {
-  return newsApi
-    .sort((a, b) => (a.date < b.date ? 1 : -1))
-    .map((item) => ({ date: item.date, label: item.label, url: item.url }))
 }
 
 const convertConcerts = (concerts: ConcertApi[]): Concert => {
