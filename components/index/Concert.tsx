@@ -41,13 +41,16 @@ export const ConcertComponent = ({ concert }: { concert: Concert }) => {
                 </div>
                 <ul>
                   {main.map((item, index) => {
-                    const status = DateTime.fromISO(item.date) < today ? 'close' : item.status
+                    const date = DateTime.fromISO(item.date)
+                    const status = date < today ? 'close' : item.status
                     return (
                       <li key={index}>
                         <a href={item.url} className={styles[status]}>
                           <div className={styles['concert-detail']}>
                             <div>
-                              <p>{DateTime.fromISO(item.date).toFormat('yyyy年M月d日')}</p>
+                              <p>
+                                {item.year}年{item.month}月{item.day}日({item.weekday})
+                              </p>
                               <h3>{item.title}</h3>
                             </div>
                             <div className={styles['link-arrow']}>
@@ -80,7 +83,9 @@ export const ConcertComponent = ({ concert }: { concert: Concert }) => {
                         <a href={item.url} className={styles[status]}>
                           <div className={styles['concert-detail']}>
                             <div>
-                              <p>{DateTime.fromISO(item.date).toFormat('yyyy年M月d日')}</p>
+                              <p>
+                                {item.year}年{item.month}月{item.day}日({item.weekday})
+                              </p>
                               <h3>{item.title}</h3>
                             </div>
                             <div className={styles['link-arrow']}>
