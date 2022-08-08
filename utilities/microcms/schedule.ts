@@ -4,7 +4,7 @@ import type { MicroCMSApi } from './api'
 type Place = '長岡リリックホール'
 
 type StudioNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
-type Studio = `第${StudioNumber}スタジオ`
+type Studio = `第${StudioNumber}スタジオ` | 'コンサートホール'
 
 type TimeDivision = '午前' | '午後' | '夜間'
 
