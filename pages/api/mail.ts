@@ -3,7 +3,7 @@ import { createTransport } from 'nodemailer'
 import type { MailForm } from '../../utilities/mail/mail'
 import { createRecievedMessage, createNoticeMessage } from '../../utilities/mail/mail'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const sendMail = async (req: NextApiRequest, res: NextApiResponse) => {
   const body: MailForm = req.body
   const transporter = createTransport({
     service: 'gmail',
@@ -22,6 +22,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     text: createRecievedMessage(body),
   })
 
+  console.log( createNoticeMessage(body))
+
   await transporter.sendMail({
     from: `ザ・ウィンド・アンサンブル<${process.env.MAIL_FROM}>`,
     to: process.env.MAIL_FROM,
@@ -31,3 +33,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.status(200)
 }
+
+export default sendMail
