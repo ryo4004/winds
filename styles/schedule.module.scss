@@ -1,0 +1,170 @@
+.schedule-next {
+  display: block;
+  margin: 24px 0;
+  background: rgba(239, 234, 227, 0.2);
+  border: 0.55px solid rgba(239, 234, 227, 0.2);
+  position: relative;
+  padding: 24px;
+  max-width: 350px;
+
+  .todayflag {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin: 0;
+    padding: 2 0 0;
+    z-index: 2;
+    width: 40px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    background: #b60005;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      height: 0;
+      width: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 5px solid #b60005;
+    }
+  }
+
+  .frame {
+    display: block;
+    font-size: 20px;
+
+    .month-date {
+      margin-right: 8px;
+
+      .text {
+        font-size: 0.9em;
+        margin-right: 2px;
+      }
+
+      .day {
+        margin: 0 4px;
+        padding: 4px 8px;
+        border-radius: 8px;
+        background: #eee;
+
+        &.saturday {
+          color: #fff;
+          background: rgba(0, 103, 192, 0.6);
+        }
+        &.sunday {
+          color: #fff;
+          background: rgba(237, 26, 61, 0.6);
+        }
+      }
+    }
+
+    .time {
+    }
+
+    .place {
+      color: #666;
+      display: block;
+      font-size: 16px;
+    }
+    .studio {
+      font-size: 24px;
+
+      span {
+        margin: 0 4px;
+      }
+    }
+  }
+}
+
+.schedule-after {
+  display: block;
+  margin: 24px 0;
+  background: #fff;
+  border: 0.55px solid rgba(239, 234, 227, 0.2);
+  position: relative;
+  // padding: 16px 24px;
+  // max-width: 350px;
+
+  .each {
+    padding: 8px 24px;
+    display: flex;
+
+    @media (max-width: 767px) {
+      & {
+        flex-direction: column;
+        padding: 12px 8px;
+      }
+    }
+
+    &:hover {
+      background: rgba(239, 234, 227, 0.2);
+    }
+
+    .frame {
+      display: block;
+      font-size: 20px;
+
+      .month-date {
+        margin-right: 8px;
+        text-align: right;
+
+        .month {
+          display: inline-block;
+          min-width: 22px;
+          text-align: center;
+        }
+
+        .date {
+          display: inline-block;
+          min-width: 22px;
+          text-align: center;
+        }
+
+        .text {
+          font-size: 0.9em;
+          margin-right: 2px;
+        }
+
+        .day {
+          margin: 0 4px;
+          padding: 4px 8px;
+          border-radius: 8px;
+          font-size: 13px;
+          background: #eee;
+
+          &.saturday {
+            color: #fff;
+            background: rgba(0, 103, 192, 0.6);
+          }
+          &.sunday {
+            color: #fff;
+            background: rgba(237, 26, 61, 0.6);
+          }
+        }
+      }
+
+      .time {
+        margin-right: 8px;
+      }
+
+      .place {
+        margin-right: 8px;
+        // display: block;
+        font-size: 16px;
+      }
+
+      .studio {
+        // font-size: 24px;
+
+        span {
+          margin: 0 4px;
+        }
+      }
+    }
+  }
+}
