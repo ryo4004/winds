@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import type { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { FaChevronRight } from 'react-icons/fa'
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header'
@@ -30,10 +30,10 @@ export const Layout = ({
             <Link href="/">ホーム</Link>
             {pathList.map((item) => {
               return (
-                <>
+                <Fragment key={item.path}>
                   <FaChevronRight />
                   <Link href={item.path}>{item.label}</Link>
-                </>
+                </Fragment>
               )
             })}
           </div>
