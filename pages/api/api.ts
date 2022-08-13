@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { History } from '../../utilities/domain/history/history'
 
-const BASE_PATH = 'http://windsapi.winds-n.com'
+const BASE_PATH = 'https://windsapi.winds-n.com'
 
 const getContents = async (url: string) => {
   const options = {
