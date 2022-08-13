@@ -8,7 +8,7 @@ import { ConcertComponent } from '../components/index/Concert'
 import { ScheduleComponent } from '../components/index/Schedule'
 import { Contact } from '../components/index/Contact'
 import { Footer } from '../components/Footer/Footer'
-import { getAllContents, getContents } from './api/api'
+import { getAllContents, getContents } from './api/microcms'
 
 import styles from '../styles/index.module.scss'
 
