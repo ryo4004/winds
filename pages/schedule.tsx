@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import type { GetStaticProps } from 'next'
 
 import { convertScheduleList } from '../utilities/microcms/schedule'
-import { getAllContents } from './api/api'
+import { getAllContents } from './api/microcms'
 import { splitByToday } from '../utilities/microcms/schedule'
 import { Block } from '../components/Layout/Block'
 import { Layout } from '../components/Layout/Layout'
