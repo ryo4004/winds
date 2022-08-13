@@ -17,6 +17,6 @@ const getHistory = async () => {
 }
 
 export const useHistory = () => {
-  const { data, error } = useSWR<History[]>('/history', getHistory)
+  const { data, error } = useSWR<{ list: History[] }>('/history', getHistory)
   return { data: data ?? null, error: error ?? null }
 }
