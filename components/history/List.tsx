@@ -129,7 +129,7 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
                 <div className="poster">{poster}</div>
                 <div className={'overview ' + item.type}>
                   <div>
-                    {this.showDate(item.detail)}
+                    <ShowDate history={item} />
                     {this.showPlace(item.detail)}
                     {this.showConductor(item.detail)}
                     {this.showGuest(item.detail)}
@@ -143,5 +143,32 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
         )
       })}
     </>
+  )
+}
+
+const ShowDate = ({ history }: { history: History }) => {
+  if (history.time.time && history.time.label) {
+    return (
+      <Labeling label="日時">
+        <div>
+          <div>{history.time.date}</div>
+          <div>{history.time.time + history.time.label}</div>
+        </div>
+      </Labeling>
+    )
+  }
+  return (
+    <Labeling label="開催日">
+      <div>{history.time.date}</div>
+    </Labeling>
+  )
+}
+
+const Labeling = ({ label, children }: { label: string; children: ReactNode }) => {
+  return (
+    <div className={styles.item}>
+      <label>{label}</label>
+      <div>{children}</div>
+    </div>
   )
 }
