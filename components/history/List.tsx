@@ -132,7 +132,7 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
                     <ShowDate history={item} />
                     <ShowPlace history={item} />
                     <ShowConductor history={item} />
-                    {this.showGuest(item.detail)}
+                    <ShowGuest history={item} />
                     {this.showGuide(item.detail)}
                   </div>
                   <ol className="music-list">{this.showMusic(item.detail)}</ol>
@@ -195,4 +195,15 @@ const ShowConductor = ({ history }: { history: History }) => {
     name += history.conductor[i].name + '・'
   }
   return <Labeling label="指揮">{name.slice(0, -1)}</Labeling>
+}
+
+const ShowGuest = ({ history }: { history: History }) => {
+  if (!history.guest) {
+    return null
+  }
+  var list = ''
+  for (var i in history.guest) {
+    list = history.guest[i].name + '(' + history.guest[i].instrument + ')'
+  }
+  return <Labeling label="客演">{list}</Labeling>
 }
