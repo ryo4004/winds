@@ -229,23 +229,6 @@ const ShowMusic = ({ history }: { history: History }) => {
     <>
       {history.contents.map((list, i) => {
         const ml = list.music.map((ml, j) => {
-          const composer =
-            'composer' in data[ml] ? (
-              'arranger' in data[ml] ? (
-                <span className={styles.composer}>
-                  {data[ml].composer}
-                  {data[ml].composer?.match(/民謡/) ? '' : '作曲'}
-                  <span>/</span>
-                  {data[ml].arranger}編曲
-                </span>
-              ) : (
-                <span className={styles.composer}>{data[ml].composer}</span>
-              )
-            ) : 'arranger' in data[ml] ? (
-              <span className={styles.composer}>{data[ml].arranger}編曲</span>
-            ) : (
-              ''
-            )
           const additional =
             'add' in data[ml] ? (
               <ol>
@@ -270,7 +253,7 @@ const ShowMusic = ({ history }: { history: History }) => {
             <li key={'m' + history.id + j} className={styles.track}>
               <div>
                 <span>{data[ml].title}</span>
-                {composer}
+                <Composer composer={data[ml].composer} arranger={data[ml].arranger} />
                 {additional}
                 {movement}
               </div>
@@ -286,4 +269,23 @@ const ShowMusic = ({ history }: { history: History }) => {
       })}
     </>
   )
+}
+
+const Composer = ({ composer, arranger }: { composer?: string; arranger?: string }) => {
+  if (composer && arranger) {
+    return (
+      <span className={styles.composer}>
+        {composer}
+        {composer?.match(/民謡/) ? '' : '作曲'}
+        <span>/</span>
+        {arranger}編曲
+      </span>
+    )
+  } else if (composer) {
+    return <span className={styles.composer}>{composer}</span>
+  } else if (arranger) {
+    return <span className={styles.composer}>{arranger}編曲</span>
+  } else {
+    return null
+  }
 }
