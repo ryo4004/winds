@@ -227,26 +227,23 @@ const ShowMusic = ({ history }: { history: History }) => {
   const { data } = history
   return (
     <>
-      {history.contents.map((list, i) => {
-        const ml = list.music.map((ml, j) => {
-          return (
-            <li key={'m' + history.id + j} className={styles.track}>
-              <div>
-                <span>{data[ml].title}</span>
-                <Composer composer={data[ml].composer} arranger={data[ml].arranger} />
-                <Additional add={data[ml].add} />
-                <Movement movement={data[ml].movement} />
-              </div>
-            </li>
-          )
-        })
-        return (
-          <li key={'l' + history.id + i}>
-            <label className={list.label.match(/第[0-9]部/) ? '' : styles.other}>{list.label}</label>
-            <ol>{ml}</ol>
-          </li>
-        )
-      })}
+      {history.contents.map((list, i) => (
+        <li key={'l' + history.id + i}>
+          <label className={list.label.match(/第[0-9]部/) ? '' : styles.other}>{list.label}</label>
+          <ol>
+            {list.music.map((ml, j) => (
+              <li key={'m' + history.id + j} className={styles.track}>
+                <div>
+                  <span>{data[ml].title}</span>
+                  <Composer composer={data[ml].composer} arranger={data[ml].arranger} />
+                  <Additional add={data[ml].add} />
+                  <Movement movement={data[ml].movement} />
+                </div>
+              </li>
+            ))}
+          </ol>
+        </li>
+      ))}
     </>
   )
 }
