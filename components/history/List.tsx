@@ -229,16 +229,6 @@ const ShowMusic = ({ history }: { history: History }) => {
     <>
       {history.contents.map((list, i) => {
         const ml = list.music.map((ml, j) => {
-          const additional =
-            'add' in data[ml] ? (
-              <ol>
-                {data[ml].add?.map((mv, k) => (
-                  <li key={'a' + history.id + k}>{mv}</li>
-                ))}
-              </ol>
-            ) : (
-              ''
-            )
           const movement =
             'movement' in data[ml] ? (
               <ol>
@@ -254,7 +244,7 @@ const ShowMusic = ({ history }: { history: History }) => {
               <div>
                 <span>{data[ml].title}</span>
                 <Composer composer={data[ml].composer} arranger={data[ml].arranger} />
-                {additional}
+                <Additional add={data[ml].add} />
                 {movement}
               </div>
             </li>
@@ -288,4 +278,17 @@ const Composer = ({ composer, arranger }: { composer?: string; arranger?: string
   } else {
     return null
   }
+}
+
+const Additional = ({ add }: { add?: Array<string> }) => {
+  if (add) {
+    return (
+      <ol>
+        {add.map((mv, k) => (
+          <li key={k}>{mv}</li>
+        ))}
+      </ol>
+    )
+  }
+  return null
 }
