@@ -1,7 +1,7 @@
+import { List } from '../components/history/List'
 import { Block } from '../components/Layout/Block'
 import { Layout } from '../components/Layout/Layout'
 import { Text } from '../components/Layout/Text'
-import { useHistory } from './api/api'
 
 const History = () => {
   return (
@@ -18,20 +18,6 @@ const History = () => {
         <List />
       </Block>
     </Layout>
-  )
-}
-
-const List = () => {
-  const { data, error } = useHistory()
-  if (!data || error) {
-    return <>読み込み中</>
-  }
-  return (
-    <>
-      {data.list.map((item) => {
-        return <div key={item.title}>{item.title}</div>
-      })}
-    </>
   )
 }
 
