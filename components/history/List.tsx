@@ -135,7 +135,9 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
                     <ShowGuest history={item} />
                     <ShowGuide history={item} />
                   </div>
-                  <ol className="music-list">{this.showMusic(item.detail)}</ol>
+                  <ol className="music-list">
+                    <ShowMusic history={item} />
+                  </ol>
                 </div>
               </div>
             </div>
@@ -218,5 +220,70 @@ const ShowGuide = ({ history }: { history: History }) => {
         <a href={history.guide}>案内ページ</a>
       </div>
     </div>
+  )
+}
+
+const ShowMusic = ({ history }: { history: History }) => {
+  const { data } = history
+  return (
+    <>
+      {history.contents.map((list, i) => {
+        const ml = list.music.map((ml, j) => {
+          const composer =
+            'composer' in data[ml] ? (
+              'arranger' in data[ml] ? (
+                <span className={styles.composer}>
+                  {data[ml].composer}
+                  {data[ml].composer?.match(/民謡/) ? '' : '作曲'}
+                  <span>/</span>
+                  {data[ml].arranger}編曲
+                </span>
+              ) : (
+                <span className={styles.composer}>{data[ml].composer}</span>
+              )
+            ) : 'arranger' in data[ml] ? (
+              <span className={styles.composer}>{data[ml].arranger}編曲</span>
+            ) : (
+              ''
+            )
+          const additional =
+            'add' in data[ml] ? (
+              <ol>
+                {data[ml].add?.map((mv, k) => (
+                  <li key={'a' + history.id + k}>{mv}</li>
+                ))}
+              </ol>
+            ) : (
+              ''
+            )
+          const movement =
+            'movement' in data[ml] ? (
+              <ol>
+                {data[ml].movement?.map((mv, k) => (
+                  <li key={'a' + history.id + k}>{mv}</li>
+                ))}
+              </ol>
+            ) : (
+              ''
+            )
+          return (
+            <li key={'m' + history.id + j} className={styles.track}>
+              <div>
+                <span>{data[ml].title}</span>
+                {composer}
+                {additional}
+                {movement}
+              </div>
+            </li>
+          )
+        })
+        return (
+          <li key={'l' + history.id + i}>
+            <label className={list.label.match(/第[0-9]部/) ? '' : styles.other}>{list.label}</label>
+            <ol>{ml}</ol>
+          </li>
+        )
+      })}
+    </>
   )
 }
