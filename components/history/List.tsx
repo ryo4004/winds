@@ -103,10 +103,10 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
   return (
     <>
       {concertList.map((item) => {
-        if (displayType.main && item.type === 'main') {
+        if (!displayType.main && item.type === 'main') {
           return null
         }
-        if (displayType.mini && item.type === 'mini') {
+        if (!displayType.mini && item.type === 'mini') {
           return null
         }
         const poster = item.poster ? (
