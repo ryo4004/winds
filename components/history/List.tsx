@@ -130,7 +130,7 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
                 <div className={'overview ' + item.type}>
                   <div>
                     <ShowDate history={item} />
-                    {this.showPlace(item.detail)}
+                    <ShowPlace history={item} />
                     {this.showConductor(item.detail)}
                     {this.showGuest(item.detail)}
                     {this.showGuide(item.detail)}
@@ -170,5 +170,18 @@ const Labeling = ({ label, children }: { label: string; children: ReactNode }) =
       <label>{label}</label>
       <div>{children}</div>
     </div>
+  )
+}
+
+const ShowPlace = ({ history }: { history: History }) => {
+  if (!history.place) {
+    return null
+  }
+  return (
+    <Labeling label="会場">
+      {history.place.map((each, i) => {
+        return <div key={i}>{each}</div>
+      })}
+    </Labeling>
   )
 }
