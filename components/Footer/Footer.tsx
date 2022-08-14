@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { DateTime } from 'luxon'
-import classNames from 'classnames'
 
+import { Block } from '../Layout/Block'
 import { Logo } from '../svg/Logo'
 import { ScrollTop } from './ScrollTop/ScrollTop'
 import { BackToHome } from './BackToHome/BackToHome'
@@ -11,9 +11,9 @@ import styles from './Footer.module.scss'
 export const Footer = ({ isHome }: { isHome: boolean }) => {
   return (
     <>
-      <div className={classNames('block', styles['block'])}>
+      <Block>
         <BackNavigation isHome={isHome} />
-      </div>
+      </Block>
       <footer className={styles.footer}>
         <div>
           <div className={styles.author}>
@@ -43,11 +43,11 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
 const BackNavigation = ({ isHome }: { isHome: boolean }) => {
   return (
     <div className={styles['back-navigation']}>
-      {isHome && <ScrollTop isHome={true} />}
+      {isHome && <ScrollTop rightPosition={true} />}
       {!isHome && (
         <>
           <BackToHome />
-          <ScrollTop />
+          <ScrollTop rightPosition={false} />
         </>
       )}
     </div>

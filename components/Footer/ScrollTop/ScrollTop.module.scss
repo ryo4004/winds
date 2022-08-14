@@ -1,5 +1,5 @@
 .index {
-  &.home {
+  &.right-position {
     margin-left: auto;
   }
   .scroll-top {
@@ -25,7 +25,7 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
-    i {
+    .icon {
       margin-right: 0.2em;
       color: #666;
     }
