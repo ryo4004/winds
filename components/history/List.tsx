@@ -117,14 +117,14 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
         )
 
         return (
-          <details key={item.id} className={'concert-item ' + item.type + ' ' + item.id}>
-            <summary onTouchStart={() => {}}>
+          <details key={item.id} className={classNames(styles['concert-item'], styles[item.type], styles[item.id])}>
+            <summary>
               <h2>{item.title}</h2>
             </summary>
             <div>
-              <div className="detail">
-                <div className="poster">{poster}</div>
-                <div className={'overview ' + item.type}>
+              <div className={styles.detail}>
+                <div className={styles.poster}>{poster}</div>
+                <div className={classNames(styles.overview, styles[item.type])}>
                   <div>
                     <ShowDate time={item.time} />
                     <ShowPlace place={item.place} />
@@ -132,7 +132,7 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
                     <ShowGuest guest={item.guest} />
                     <ShowGuide guide={item.guide} />
                   </div>
-                  <ol className="music-list">
+                  <ol className={styles['music-list']}>
                     <ShowMusic contents={item.contents} data={item.data} />
                   </ol>
                 </div>
