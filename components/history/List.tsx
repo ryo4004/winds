@@ -34,7 +34,8 @@ export const List = () => {
         displayType={displayType}
         updateDisplayType={updateDisplayType}
       />
-      <ConcertList concertList={data.list} displayType={displayType} />
+      <ConcertList concertList={data.list} displayType={displayType} searchText={searchText} />
+      <SearchResult concertList={data.list} searchText={searchText} />
     </div>
   )
 }
@@ -96,7 +97,18 @@ const SearchBar = ({
   )
 }
 
-const ConcertList = ({ concertList, displayType }: { concertList: History[]; displayType: DisplayType }) => {
+const ConcertList = ({
+  concertList,
+  displayType,
+  searchText,
+}: {
+  concertList: History[]
+  displayType: DisplayType
+  searchText: string
+}) => {
+  if (searchText !== '') {
+    return null
+  }
   return (
     <>
       {concertList.map((item) => {
@@ -288,4 +300,57 @@ const Movement = ({ movement }: { movement?: Array<string> }) => {
       ))}
     </ol>
   )
+}
+
+const SearchResult = ({ concertList, searchText }: { concertList: History[]; searchText: string }) => {
+  if (searchText === '') {
+    return null
+  }
+  const results = concertList.map((item) => {
+    return item.data.map((track) => {
+      const s = new RegExp(escapeReg(searchText), 'i')
+      // 演奏会名で一致
+      if (item.title.search(s) >= 0) return { concert: item, track }
+      // タイトルで一致
+      if (track.title.search(s) >= 0) return { concert: item, track }
+      // 作曲者名で一致
+      if ((track.composer ? track.composer : '').search(s) >= 0) return { concert: item, track }
+      // 編曲者名で一致
+      if ((track.arranger ? track.arranger : '').search(s) >= 0) return { concert: item, track }
+    })
+  })
+
+  if (!results) {
+    return null
+  }
+
+  return (
+    <div className={styles['result-list']}>
+      {results.map((item, i) => {
+        if (!item) {
+          return null
+        }
+        return item.map((each, j) => {
+          if (!each) {
+            return null
+          }
+          return (
+            <div key={i + j} className={styles['result-item']}>
+              <div className={styles[each.concert.type]}>
+                <span className={styles['concert-title']}>{each.concert.title}</span>
+                <span className={styles.title}>{each.track.title}</span>
+                <Composer composer={each.track.composer} arranger={each.track.arranger} />
+              </div>
+            </div>
+          )
+        })
+      })}
+    </div>
+  )
+}
+
+const escapeReg = (string: string) => {
+  const reRegExp = /[\\^$.*+?()[\]{}|]/g
+  const reHasRegExp = new RegExp(reRegExp.source)
+  return reHasRegExp.test(string) ? string.replace(reRegExp, '\\$&') : string
 }
