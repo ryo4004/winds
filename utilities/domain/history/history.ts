@@ -1,15 +1,15 @@
-type Time = {
+export type Time = {
   timestamp: number
   date: string
   time?: string
   label?: string
 }
 
-type Conductor = {
+export type Conductor = {
   name: string
 }
 
-type Guest = {
+export type Guest = {
   name: string
   instrument: string
   url?: string
@@ -17,12 +17,12 @@ type Guest = {
   belong?: string
 }
 
-type Content = {
+export type Content = {
   label: string
   music: Array<number>
 }
 
-type Data = {
+export type Data = {
   audio?: number
   video?: number
   title: string

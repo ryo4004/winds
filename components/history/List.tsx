@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { useHistory } from '../../pages/api/api'
 
 import styles from './List.module.scss'
-import type { History } from '../../utilities/domain/history/history'
+import type { History, Time, Conductor, Guest, Content, Data } from '../../utilities/domain/history/history'
 
 type DisplayType = {
   main: boolean
@@ -35,9 +35,6 @@ export const List = () => {
         updateDisplayType={updateDisplayType}
       />
       <ConcertList concertList={data.list} displayType={displayType} />
-      {data.list.map((item) => {
-        return <div key={item.title}>{item.title}</div>
-      })}
     </div>
   )
 }
@@ -129,14 +126,14 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
                 <div className="poster">{poster}</div>
                 <div className={'overview ' + item.type}>
                   <div>
-                    <ShowDate history={item} />
-                    <ShowPlace history={item} />
-                    <ShowConductor history={item} />
-                    <ShowGuest history={item} />
-                    <ShowGuide history={item} />
+                    <ShowDate time={item.time} />
+                    <ShowPlace place={item.place} />
+                    <ShowConductor conductor={item.conductor} />
+                    <ShowGuest guest={item.guest} />
+                    <ShowGuide guide={item.guide} />
                   </div>
                   <ol className="music-list">
-                    <ShowMusic history={item} />
+                    <ShowMusic contents={item.contents} data={item.data} />
                   </ol>
                 </div>
               </div>
@@ -145,24 +142,6 @@ const ConcertList = ({ concertList, displayType }: { concertList: History[]; dis
         )
       })}
     </>
-  )
-}
-
-const ShowDate = ({ history }: { history: History }) => {
-  if (history.time.time && history.time.label) {
-    return (
-      <Labeling label="日時">
-        <div>
-          <div>{history.time.date}</div>
-          <div>{history.time.time + history.time.label}</div>
-        </div>
-      </Labeling>
-    )
-  }
-  return (
-    <Labeling label="開催日">
-      <div>{history.time.date}</div>
-    </Labeling>
   )
 }
 
@@ -175,64 +154,82 @@ const Labeling = ({ label, children }: { label: string; children: ReactNode }) =
   )
 }
 
-const ShowPlace = ({ history }: { history: History }) => {
-  if (!history.place) {
+const ShowDate = ({ time }: { time: Time }) => {
+  if (time.time && time.label) {
+    return (
+      <Labeling label="日時">
+        <div>
+          <div>{time.date}</div>
+          <div>{time.time + time.label}</div>
+        </div>
+      </Labeling>
+    )
+  }
+  return (
+    <Labeling label="開催日">
+      <div>{time.date}</div>
+    </Labeling>
+  )
+}
+
+const ShowPlace = ({ place }: { place?: Array<string> }) => {
+  if (!place) {
     return null
   }
   return (
     <Labeling label="会場">
-      {history.place.map((each, i) => {
+      {place.map((each, i) => {
         return <div key={i}>{each}</div>
       })}
     </Labeling>
   )
 }
 
-const ShowConductor = ({ history }: { history: History }) => {
-  if (!history.conductor) {
+const ShowConductor = ({ conductor }: { conductor?: Array<Conductor> }) => {
+  if (!conductor) {
     return null
   }
-  var name = ''
-  for (var i in history.conductor) {
-    name += history.conductor[i].name + '・'
-  }
-  return <Labeling label="指揮">{name.slice(0, -1)}</Labeling>
+  const nameList = conductor.map((item) => item.name)
+  return <Labeling label="指揮">{nameList.join('・')}</Labeling>
 }
 
-const ShowGuest = ({ history }: { history: History }) => {
-  if (!history.guest) {
+const ShowGuest = ({ guest }: { guest?: Array<Guest> }) => {
+  if (!guest) {
     return null
   }
-  var list = ''
-  for (var i in history.guest) {
-    list = history.guest[i].name + '(' + history.guest[i].instrument + ')'
-  }
-  return <Labeling label="客演">{list}</Labeling>
+  return (
+    <Labeling label="客演">
+      {guest.map((item) => (
+        <>
+          {item.name}({item.instrument})
+        </>
+      ))}
+    </Labeling>
+  )
 }
 
-const ShowGuide = ({ history }: { history: History }) => {
-  if (!history.guide) {
+const ShowGuide = ({ guide }: { guide?: string }) => {
+  if (!guide) {
     return null
   }
   return (
     <div className={styles.item}>
       <div className={styles.guide}>
-        <a href={history.guide}>案内ページ</a>
+        <a href={guide}>案内ページ</a>
       </div>
     </div>
   )
 }
 
-const ShowMusic = ({ history }: { history: History }) => {
-  const { data } = history
+const ShowMusic = ({ contents, data }: { contents: Array<Content>; data: Array<Data> }) => {
   return (
     <>
-      {history.contents.map((list, i) => (
-        <li key={'l' + history.id + i}>
+      {contents.map((list, i) => (
+        <li key={`list-${i}`}>
           <label className={list.label.match(/第[0-9]部/) ? '' : styles.other}>{list.label}</label>
           <ol>
             {list.music.map((ml, j) => (
-              <li key={'m' + history.id + j} className={styles.track}>
+              <li key={`music-${j}`} className={styles.track}>
                 <div>
                   <span>{data[ml].title}</span>
                   <Composer composer={data[ml].composer} arranger={data[ml].arranger} />
@@ -253,7 +250,7 @@ const Composer = ({ composer, arranger }: { composer?: string; arranger?: string
     return (
       <span className={styles.composer}>
         {composer}
-        {composer?.match(/民謡/) ? '' : '作曲'}
+        {composer.match(/民謡/) ? '' : '作曲'}
         <span>/</span>
         {arranger}編曲
       </span>
