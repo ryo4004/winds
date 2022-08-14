@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState } from 'react'
+import React, { ReactNode, useRef, useState } from 'react'
 import classNames from 'classnames'
 
 import { useHistory } from '../../pages/api/api'
@@ -199,10 +199,10 @@ const ShowGuest = ({ guest }: { guest?: Array<Guest> }) => {
   }
   return (
     <Labeling label="客演">
-      {guest.map((item) => (
-        <>
+      {guest.map((item, i) => (
+        <React.Fragment key={i}>
           {item.name}({item.instrument})
-        </>
+        </React.Fragment>
       ))}
     </Labeling>
   )
