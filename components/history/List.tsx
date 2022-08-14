@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 import classNames from 'classnames'
 
 import { useHistory } from '../../pages/api/api'
 
 import styles from './List.module.scss'
+import type { History } from '../../utilities/domain/history/history'
 
 type DisplayType = {
   main: boolean
@@ -33,6 +34,7 @@ export const List = () => {
         displayType={displayType}
         updateDisplayType={updateDisplayType}
       />
+      <ConcertList concertList={data.list} displayType={displayType} />
       {data.list.map((item) => {
         return <div key={item.title}>{item.title}</div>
       })}
@@ -94,5 +96,52 @@ const SearchBar = ({
         </div>
       )}
     </div>
+  )
+}
+
+const ConcertList = ({ concertList, displayType }: { concertList: History[]; displayType: DisplayType }) => {
+  return (
+    <>
+      {concertList.map((item) => {
+        if (displayType.main && item.type === 'main') {
+          return null
+        }
+        if (displayType.mini && item.type === 'mini') {
+          return null
+        }
+        const poster = item.poster ? (
+          <img src={item.poster} />
+        ) : (
+          <div className={styles['no-poster']}>
+            <div>
+              <span>NO IMAGE</span>
+            </div>
+          </div>
+        )
+
+        return (
+          <details key={item.id} className={'concert-item ' + item.type + ' ' + item.id}>
+            <summary onTouchStart={() => {}}>
+              <h2>{item.title}</h2>
+            </summary>
+            <div>
+              <div className="detail">
+                <div className="poster">{poster}</div>
+                <div className={'overview ' + item.type}>
+                  <div>
+                    {this.showDate(item.detail)}
+                    {this.showPlace(item.detail)}
+                    {this.showConductor(item.detail)}
+                    {this.showGuest(item.detail)}
+                    {this.showGuide(item.detail)}
+                  </div>
+                  <ol className="music-list">{this.showMusic(item.detail)}</ol>
+                </div>
+              </div>
+            </div>
+          </details>
+        )
+      })}
+    </>
   )
 }
