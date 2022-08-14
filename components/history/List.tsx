@@ -36,6 +36,7 @@ export const List = () => {
       />
       <ConcertList concertList={data.list} displayType={displayType} searchText={searchText} />
       <SearchResult concertList={data.list} searchText={searchText} />
+      <NoData displayType={displayType} searchText={searchText} />
     </div>
   )
 }
@@ -353,4 +354,19 @@ const escapeReg = (string: string) => {
   const reRegExp = /[\\^$.*+?()[\]{}|]/g
   const reHasRegExp = new RegExp(reRegExp.source)
   return reHasRegExp.test(string) ? string.replace(reRegExp, '\\$&') : string
+}
+
+const NoData = ({ displayType, searchText }: { displayType: DisplayType; searchText: string }) => {
+  const isTypeNotSelected = !displayType.main && !displayType.mini && searchText === ''
+  return (
+    <div className={styles.notice}>
+      {isTypeNotSelected && (
+        <>
+          <i className="fas fa-arrow-up"></i>
+          <span>演奏会のジャンルを選んでください</span>
+        </>
+      )}
+      {!isTypeNotSelected && <span>これ以上はありません</span>}
+    </div>
+  )
 }
