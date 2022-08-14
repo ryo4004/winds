@@ -229,23 +229,13 @@ const ShowMusic = ({ history }: { history: History }) => {
     <>
       {history.contents.map((list, i) => {
         const ml = list.music.map((ml, j) => {
-          const movement =
-            'movement' in data[ml] ? (
-              <ol>
-                {data[ml].movement?.map((mv, k) => (
-                  <li key={'a' + history.id + k}>{mv}</li>
-                ))}
-              </ol>
-            ) : (
-              ''
-            )
           return (
             <li key={'m' + history.id + j} className={styles.track}>
               <div>
                 <span>{data[ml].title}</span>
                 <Composer composer={data[ml].composer} arranger={data[ml].arranger} />
                 <Additional add={data[ml].add} />
-                {movement}
+                <Movement movement={data[ml].movement} />
               </div>
             </li>
           )
@@ -281,14 +271,27 @@ const Composer = ({ composer, arranger }: { composer?: string; arranger?: string
 }
 
 const Additional = ({ add }: { add?: Array<string> }) => {
-  if (add) {
-    return (
-      <ol>
-        {add.map((mv, k) => (
-          <li key={k}>{mv}</li>
-        ))}
-      </ol>
-    )
+  if (!add) {
+    return null
   }
-  return null
+  return (
+    <ol>
+      {add.map((mv, k) => (
+        <li key={k}>{mv}</li>
+      ))}
+    </ol>
+  )
+}
+
+const Movement = ({ movement }: { movement?: Array<string> }) => {
+  if (!movement) {
+    return null
+  }
+  return (
+    <ol>
+      {movement.map((mv, k) => (
+        <li key={k}>{mv}</li>
+      ))}
+    </ol>
+  )
 }
