@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { IoChevronUpSharp } from 'react-icons/io5'
 
 import styles from './ScrollTop.module.scss'
 
@@ -7,7 +8,7 @@ export const ScrollTop = ({ rightPosition }: { rightPosition: boolean }) => {
   return (
     <div className={classNames(styles.index, { [styles['right-position']]: rightPosition })}>
       <div className={styles['scroll-top']} onClick={scrollTop}>
-        <i className="fas fa-chevron-up"></i>
+        <IoChevronUpSharp className={styles.icon} />
         <span>トップへ</span>
       </div>
     </div>
