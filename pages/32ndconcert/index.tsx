@@ -4,6 +4,7 @@ import { DateTime } from 'luxon'
 
 import styles from '../../styles/32ndconcert/32ndconcert.module.scss'
 import Link from 'next/link'
+import { Logo32ndConcert } from '../../components/svg/Logo'
 
 const Concert = () => {
   const [overlay, setOverlay] = useState({
@@ -43,7 +44,9 @@ const Concert = () => {
         <div className={styles.frame}>
           <div className={styles['main-title']}>
             <div className={styles.logo}>
-              <a href="https://winds-n.com">{/* <?php require('../image/logo/logo.svg'); ?> */}</a>
+              <a href="https://winds-n.com">
+                <Logo32ndConcert />
+              </a>
             </div>
 
             <div className={styles['title-frame']}>

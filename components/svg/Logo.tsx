@@ -40,6 +40,14 @@ export const Logo31stConcert = () => {
   )
 }
 
+export const Logo32ndConcert = () => {
+  return (
+    <div className={styles['logo-32ndconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
 const Logo = () => {
   return (
     <svg viewBox="0 0 271.828 30.001">
