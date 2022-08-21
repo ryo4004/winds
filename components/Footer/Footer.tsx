@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { DateTime } from 'luxon'
 
 import { Block } from '../Layout/Block'
-import { Logo } from '../svg/Logo'
+import { FooterLogo } from '../svg/Logo'
 import { ScrollTop } from './ScrollTop/ScrollTop'
 import { BackToHome } from './BackToHome/BackToHome'
 
@@ -19,7 +19,7 @@ export const Footer = ({ isHome }: { isHome: boolean }) => {
           <div className={styles.author}>
             <Link href="/" passHref>
               <a>
-                <Logo isFooterLink={true} />
+                <FooterLogo />
               </a>
             </Link>
             <small>&copy; The Wind Ensemble 1985-{DateTime.now().toFormat('yyyy')} All Rights Reserved.</small>

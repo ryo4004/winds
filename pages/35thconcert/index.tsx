@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-import { Logo } from '../../components/svg/35thconcert/logo'
 import { Title } from '../../components/svg/35thconcert/title'
 import { Date } from '../../components/svg/35thconcert/date'
 
 import styles from '../../styles/35thconcert/35thconcert.module.scss'
 import { Footer } from '../../components/Footer/Footer'
 import { DateTime } from 'luxon'
+import { Logo35thConcert } from '../../components/svg/Logo'
 
 const Concert = () => {
   // 終演表示の設定
@@ -64,7 +64,7 @@ const Concert = () => {
       <div className={classNames(styles.home, filter ? styles.dark : styles.light)}>
         <div className={styles.main}>
           <div className={styles['main-logo']}>
-            <Logo />
+            <Logo35thConcert />
           </div>
           <div className={styles.title}>
             <Title st0={styles.st0} />

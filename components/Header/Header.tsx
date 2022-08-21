@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Logo } from '../svg/Logo'
+import { HeaderLogo } from '../svg/Logo'
 
 import styles from './Header.module.scss'
 
@@ -9,7 +9,7 @@ export const Header = () => {
       <section className={styles['main-logo']}>
         <Link href="/" passHref>
           <a>
-            <Logo isHeaderLink={true} />
+            <HeaderLogo />
           </a>
         </Link>
       </section>

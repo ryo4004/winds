@@ -46,32 +46,6 @@
     padding: 24px 0 0;
   }
 
-  .logo {
-    /* opacity: 1; */
-    /* transition: fadein ease 1s; */
-  }
-
-  .logo {
-    max-width: 800px;
-    margin: 0 auto;
-    -webkit-animation: fadein 1s linear 1;
-    animation: fadein 1s linear 1;
-
-    display: block;
-    width: 80%;
-    margin: 16px auto;
-    fill: rgb(255, 255, 255);
-  }
-
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
   .title-frame {
     position: relative;
     margin: 40px 0;

@@ -1,57 +1,143 @@
-.logo {
-  width: 80%;
-  max-width: 450px;
-  fill: #fff;
+.index-logo {
+  svg {
+    width: 80%;
+    max-width: 450px;
+    fill: #fff;
 
-  &.animate path {
-    fill-opacity: 0;
-    stroke: #fff;
-    stroke-opacity: 0;
-    stroke-width: 0.2px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 60;
-    stroke-dashoffset: 100;
+    path {
+      fill-opacity: 0;
+      stroke: #fff;
+      stroke-opacity: 0;
+      stroke-width: 0.2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 100;
 
-    animation-name: draw;
-    animation-duration: 5s;
-    animation-delay: 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-timing-function: linear;
+      animation-name: draw;
+      animation-duration: 5s;
+      animation-delay: 0.5s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
 
-    @keyframes draw {
-      30% {
-        stroke-width: 0.2px;
-        stroke-opacity: 1;
-      }
-      60% {
-        stroke-opacity: 1;
-        fill-opacity: 0;
-      }
-      80% {
-        stroke-dashoffset: 0;
-      }
-      100% {
-        stroke-opacity: 0;
-        stroke-width: 0;
-        fill-opacity: 1;
+      @keyframes draw {
+        30% {
+          stroke-width: 0.2px;
+          stroke-opacity: 1;
+        }
+        60% {
+          stroke-opacity: 1;
+          fill-opacity: 0;
+        }
+        80% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-opacity: 0;
+          stroke-width: 0;
+          fill-opacity: 1;
+        }
       }
     }
   }
+}
 
-  &.header {
+.header {
+  svg {
+    width: 80%;
+    max-width: 450px;
     fill: rgba(204, 148, 37, 1);
 
     &:hover {
       fill: rgba(204, 148, 37, 0.8);
     }
   }
+}
 
-  &.footer {
+.footer {
+  svg {
     display: block;
     width: 100%;
     max-width: 450px;
     fill: #666;
+  }
+}
+
+.logo-30thconcert {
+  svg {
+    @media (max-width: 1020px) {
+      position: fixed;
+      top: 0px;
+      left: 50px;
+      display: block;
+      margin: 2.5px auto;
+      width: 80vw;
+      height: 45px;
+      fill: url(#gradient);
+    }
+    @media (min-width: 1020px) {
+      position: relative;
+      display: block;
+      margin: 50px auto;
+      max-width: 800px;
+      width: 95%;
+      height: auto;
+      fill: url(#gradient);
+    }
+  }
+}
+
+.logo-31stconcert {
+  svg {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadein 1s linear 1;
+
+    display: block;
+    width: 80%;
+    margin: 16px auto;
+    fill: rgb(255, 255, 255);
+  }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.logo-32ndconcert {
+  svg {
+    display: block;
+    width: 80%;
+    margin: 16px auto;
+    fill: rgb(255, 255, 255);
+  }
+}
+
+.logo-33rdconcert {
+  svg {
+    display: block;
+    width: 80%;
+    margin: 16px auto;
+    fill: rgb(255, 255, 255);
+  }
+}
+
+.logo-34thconcert {
+  svg {
+    fill: white;
+    filter: drop-shadow(0 0 2px #000);
+  }
+}
+
+.logo-35thconcert {
+  svg {
+    fill: white;
+    filter: drop-shadow(0 0 2px #000);
   }
 }

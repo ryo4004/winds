@@ -1,39 +1,95 @@
-import classNames from 'classnames'
-
 import styles from './Logo.module.scss'
 
-export const Logo = ({
-  isAnimate,
-  isHeaderLink,
-  isFooterLink,
-}: {
-  isAnimate?: boolean
-  isHeaderLink?: boolean
-  isFooterLink?: boolean
-}) => {
+export const IndexLogo = () => {
   return (
-    <svg
-      viewBox="0 0 271.828 30.001"
-      className={classNames(
-        styles.logo,
-        isAnimate && styles.animate,
-        isHeaderLink && styles.header,
-        isFooterLink && styles.footer
+    <div className={styles['index-logo']}>
+      <Logo />
+    </div>
+  )
+}
+
+export const HeaderLogo = () => {
+  return (
+    <div className={styles.header}>
+      <Logo />
+    </div>
+  )
+}
+
+export const FooterLogo = () => {
+  return (
+    <div className={styles.footer}>
+      <Logo />
+    </div>
+  )
+}
+
+export const Logo30thConcert = () => {
+  return (
+    <div className={styles['logo-30thconcert']}>
+      <Logo linearGradient={true} />
+    </div>
+  )
+}
+
+export const Logo31stConcert = () => {
+  return (
+    <div className={styles['logo-31stconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
+export const Logo32ndConcert = () => {
+  return (
+    <div className={styles['logo-32ndconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
+export const Logo33rdConcert = () => {
+  return (
+    <div className={styles['logo-33rdconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
+export const Logo34thConcert = () => {
+  return (
+    <div className={styles['logo-34thconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
+export const Logo35thConcert = () => {
+  return (
+    <div className={styles['logo-35thconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
+const Logo = ({ linearGradient }: { linearGradient?: boolean }) => {
+  return (
+    <svg viewBox="0 0 271.828 30.001">
+      {linearGradient && (
+        <defs>
+          <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
+            <stop offset="0%" stopColor="#612200" stopOpacity="1"></stop>
+            <stop offset="13.33%" stopColor="#b97b18" stopOpacity="1"></stop>
+            <stop offset="28.48%" stopColor="#e6b433" stopOpacity="1"></stop>
+            <stop offset="40.61%" stopColor="#eee25e" stopOpacity="1"></stop>
+            <stop offset="54.55%" stopColor="#fff" stopOpacity="1"></stop>
+            <stop offset="66.06%" stopColor="#fff" stopOpacity="1"></stop>
+            <stop offset="75.15%" stopColor="#eee25e" stopOpacity="1"></stop>
+            <stop offset="84.85%" stopColor="#dea62c" stopOpacity="1"></stop>
+            <stop offset="100%" stopColor="#924300" stopOpacity="1"></stop>
+          </linearGradient>
+        </defs>
       )}
-    >
-      <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
-          <stop offset="0%" stopColor="#612200" stopOpacity="1"></stop>
-          <stop offset="13.33%" stopColor="#b97b18" stopOpacity="1"></stop>
-          <stop offset="28.48%" stopColor="#e6b433" stopOpacity="1"></stop>
-          <stop offset="40.61%" stopColor="#eee25e" stopOpacity="1"></stop>
-          <stop offset="54.55%" stopColor="#fff" stopOpacity="1"></stop>
-          <stop offset="66.06%" stopColor="#fff" stopOpacity="1"></stop>
-          <stop offset="75.15%" stopColor="#eee25e" stopOpacity="1"></stop>
-          <stop offset="84.85%" stopColor="#dea62c" stopOpacity="1"></stop>
-          <stop offset="100%" stopColor="#924300" stopOpacity="1"></stop>
-        </linearGradient>
-      </defs>
       <g>
         <g>
           <path
