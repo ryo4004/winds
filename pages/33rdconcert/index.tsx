@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import styles from '../../styles/33rdconcert/33rdconcert.module.scss'
 import Link from 'next/link'
-import { Logo33rdConcert } from '../../components/svg/Logo'
+import { FooterLogo, Logo33rdConcert } from '../../components/svg/Logo'
 
 const Concert = () => {
   const [overlay, setOverlay] = useState({
@@ -321,7 +321,9 @@ const Concert = () => {
         <div>
           <div className={styles.author}>
             <Link href="/" passHref>
-              <a>{/* <?php require('../image/logo/logo.svg'); ?> */}</a>
+              <a>
+                <FooterLogo />
+              </a>
             </Link>
             <small>&copy; The Wind Ensemble 1985-{DateTime.now().toFormat('yyyy')} All Rights Reserved.</small>
           </div>
