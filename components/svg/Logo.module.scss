@@ -55,12 +55,8 @@
   }
 }
 
-.logo {
-  width: 80%;
-  max-width: 450px;
-  fill: #fff;
-
-  &.footer {
+.footer {
+  svg {
     display: block;
     width: 100%;
     max-width: 450px;

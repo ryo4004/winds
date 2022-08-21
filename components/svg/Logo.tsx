@@ -18,6 +18,14 @@ export const HeaderLogo = () => {
   )
 }
 
+export const FooterLogo = () => {
+  return (
+    <div className={styles.footer}>
+      <LogoBody />
+    </div>
+  )
+}
+
 export const LogoBody = () => {
   return (
     <svg viewBox="0 0 271.828 30.001">
