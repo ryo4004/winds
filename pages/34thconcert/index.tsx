@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-import { Title } from '../../components/svg/34thconcert/34thconcert'
+import { Title } from '../../components/svg/34thconcert/title'
 import { Date } from '../../components/svg/34thconcert/date'
 
 import styles from '../../styles/34thconcert/34thconcert.module.scss'
