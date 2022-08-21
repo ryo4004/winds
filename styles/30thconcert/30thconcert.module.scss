@@ -852,16 +852,6 @@
     color: #ffffff;
   }
   @media (max-width: 1020px) {
-    header .svg-logo-30thconcert {
-      position: fixed;
-      top: 0px;
-      left: 50px;
-      display: block;
-      margin: 2.5px auto;
-      width: 80vw;
-      height: 45px;
-      fill: url(#gradient);
-    }
     span.subtitle {
       display: block;
       text-align: right;
@@ -1195,15 +1185,6 @@
     }
   }
   @media (min-width: 1020px) {
-    header .svg-logo-30thconcert {
-      position: relative;
-      display: block;
-      margin: 50px auto;
-      max-width: 800px;
-      width: 95%;
-      height: auto;
-      fill: url(#gradient);
-    }
     span.subtitle {
       display: block;
       height: 2em;

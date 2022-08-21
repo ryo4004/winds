@@ -24,6 +24,14 @@ export const FooterLogo = () => {
   )
 }
 
+export const Logo30thConcert = () => {
+  return (
+    <div className={styles['logo-30thconcert']}>
+      <Logo />
+    </div>
+  )
+}
+
 const Logo = () => {
   return (
     <svg viewBox="0 0 271.828 30.001">
