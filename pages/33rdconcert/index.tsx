@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import styles from '../../styles/33rdconcert/33rdconcert.module.scss'
 import Link from 'next/link'
+import { Logo33rdConcert } from '../../components/svg/Logo'
 
 const Concert = () => {
   const [overlay, setOverlay] = useState({
@@ -40,7 +41,9 @@ const Concert = () => {
         <div className={styles.frame}>
           <div className={styles['main-title']}>
             <div className={styles.logo}>
-              <a href="https://winds-n.com">{/* <?php require('../image/logo/logo.svg'); ?> */}</a>
+              <a href="https://winds-n.com">
+                <Logo33rdConcert />
+              </a>
             </div>
 
             <div className={styles['title-frame']}>
