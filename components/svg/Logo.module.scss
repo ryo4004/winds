@@ -87,3 +87,25 @@
     }
   }
 }
+
+.logo-31stconcert {
+  svg {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadein 1s linear 1;
+
+    display: block;
+    width: 80%;
+    margin: 16px auto;
+    fill: rgb(255, 255, 255);
+  }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
