@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-import { Logo } from '../../components/svg/34thconcert/logo'
 import { Title } from '../../components/svg/34thconcert/34thconcert'
 import { Date } from '../../components/svg/34thconcert/date'
 
 import styles from '../../styles/34thconcert/34thconcert.module.scss'
 import { Footer } from '../../components/Footer/Footer'
+import { Logo34thConcert } from '../../components/svg/Logo'
 
 const Concert = () => {
   const [overlay, setOverlay] = useState({
@@ -60,7 +60,7 @@ const Concert = () => {
       <div className={classNames(styles.home, filter ? styles.dark : styles.light)}>
         <div className={styles.main}>
           <div className={styles['main-logo']}>
-            <Logo />
+            <Logo34thConcert />
           </div>
           <div className={styles.title}>
             <Title />
