@@ -27,7 +27,7 @@ export const FooterLogo = () => {
 export const Logo30thConcert = () => {
   return (
     <div className={styles['logo-30thconcert']}>
-      <Logo />
+      <Logo linearGradient={true} />
     </div>
   )
 }
@@ -72,22 +72,24 @@ export const Logo35thConcert = () => {
   )
 }
 
-const Logo = () => {
+const Logo = ({ linearGradient }: { linearGradient?: boolean }) => {
   return (
     <svg viewBox="0 0 271.828 30.001">
-      <defs>
-        <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
-          <stop offset="0%" stopColor="#612200" stopOpacity="1"></stop>
-          <stop offset="13.33%" stopColor="#b97b18" stopOpacity="1"></stop>
-          <stop offset="28.48%" stopColor="#e6b433" stopOpacity="1"></stop>
-          <stop offset="40.61%" stopColor="#eee25e" stopOpacity="1"></stop>
-          <stop offset="54.55%" stopColor="#fff" stopOpacity="1"></stop>
-          <stop offset="66.06%" stopColor="#fff" stopOpacity="1"></stop>
-          <stop offset="75.15%" stopColor="#eee25e" stopOpacity="1"></stop>
-          <stop offset="84.85%" stopColor="#dea62c" stopOpacity="1"></stop>
-          <stop offset="100%" stopColor="#924300" stopOpacity="1"></stop>
-        </linearGradient>
-      </defs>
+      {linearGradient && (
+        <defs>
+          <linearGradient id="gradient" gradientUnits="userSpaceOnUse" gradientTransform="rotate(45)">
+            <stop offset="0%" stopColor="#612200" stopOpacity="1"></stop>
+            <stop offset="13.33%" stopColor="#b97b18" stopOpacity="1"></stop>
+            <stop offset="28.48%" stopColor="#e6b433" stopOpacity="1"></stop>
+            <stop offset="40.61%" stopColor="#eee25e" stopOpacity="1"></stop>
+            <stop offset="54.55%" stopColor="#fff" stopOpacity="1"></stop>
+            <stop offset="66.06%" stopColor="#fff" stopOpacity="1"></stop>
+            <stop offset="75.15%" stopColor="#eee25e" stopOpacity="1"></stop>
+            <stop offset="84.85%" stopColor="#dea62c" stopOpacity="1"></stop>
+            <stop offset="100%" stopColor="#924300" stopOpacity="1"></stop>
+          </linearGradient>
+        </defs>
+      )}
       <g>
         <g>
           <path
