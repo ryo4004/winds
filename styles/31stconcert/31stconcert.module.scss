@@ -828,4 +828,111 @@
     font-family: 'ten-mincho', serif;
     text-align: center;
   }
+
+  .footer-background {
+    background: rgb(240, 239, 235);
+  }
+
+  .back {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em 0 0;
+
+    .back-to-home {
+      display: block;
+      padding: 0.8em;
+      margin: 0 0 1em 0;
+      border-radius: 2px;
+      &:hover {
+        color: rgba(182, 0, 5, 1);
+        background: rgba(255, 255, 255, 0.6);
+      }
+      i {
+        padding-right: 0.2em;
+      }
+    }
+  }
+
+  a.bottomlink {
+    display: block;
+    position: relative;
+    padding-top: 5em;
+    width: 100%;
+    padding: 4em 0 3em;
+    margin: 2em 0 0 0;
+    background: rgba(240, 239, 235, 0);
+    text-align: center;
+    text-decoration: none;
+    color: rgba(119, 119, 119, 1);
+    font-family: 'Josefin Sans', sans-serif;
+    &:hover {
+      color: rgba(119, 119, 119, 0.8);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      border-left: 1px solid rgba(119, 119, 119, 1);
+      border-bottom: 1px solid rgba(119, 119, 119, 1);
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+      box-sizing: border-box;
+    }
+    &::after:hover {
+      border-left: 1px solid rgba(119, 119, 119, 0.8);
+      border-bottom: 1px solid rgba(119, 119, 119, 0.8);
+    }
+  }
+
+  .footer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2em 0px 2em 0px;
+    text-align: center;
+    font-size: 0.8em;
+    border-top: 1px solid rgb(220, 220, 220);
+    color: rgba(200, 200, 200, 1);
+    background: rgb(240, 239, 235);
+    @media (max-width: 768px) {
+      & {
+        font-size: 0.7em;
+      }
+    }
+  }
+
+  a,
+  div,
+  label,
+  button {
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  a {
+    color: rgba(182, 0, 5, 0.8);
+    font-weight: normal;
+    text-decoration: none;
+    transition: all ease-in-out 0.1s;
+
+    &:visited {
+      color: rgba(182, 0, 5, 0.8);
+    }
+
+    i {
+      padding-left: 0.2em;
+    }
+
+    &:hover,
+    &.ontap {
+      color: rgba(182, 0, 5, 0.4);
+      transition: all ease-in-out 0s;
+    }
+  }
+
+  b {
+    font-weight: bold;
+  }
 }

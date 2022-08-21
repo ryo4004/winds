@@ -249,25 +249,30 @@ const Concert = () => {
         </div>
       </div>
 
-      <span className={styles.remain}>終演しました</span>
+      <div className={styles.remain}>
+        <span className={styles.remain}>終演しました</span>
+      </div>
 
       <div className={styles.message}>～音楽の輪が限りなく広がりますように～</div>
 
-      <div className={styles.back}>
-        <Link href="/" passHref>
-          <a className={classNames(styles['back-to-home'], styles.tap)}>
-            <i className="fas fa-home"></i>ホームへもどる
-          </a>
-        </Link>
+      <div className={styles['footer-background']}>
+        <div className={styles.back}>
+          <Link href="/" passHref>
+            <a className={classNames(styles['back-to-home'], styles.tap)}>
+              <i className="fas fa-home"></i>ホームへもどる
+            </a>
+          </Link>
+        </div>
+
+        <a
+          href="#"
+          className={classNames(styles['bottomlink'], styles.tap)}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          BACK TO TOP
+        </a>
       </div>
-      <a
-        href="#"
-        id="bottomlink"
-        className={classNames(styles['top-scroll'], styles.tap)}
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      >
-        BACK TO TOP
-      </a>
+
       <footer className={styles.footer}>
         &copy; The Wind Ensemble 1985-{DateTime.now().toFormat('yyyy')} All Rights Reserved.
       </footer>
