@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { DirectLink } from '../../utilities/microcms/directLink/directLink'
 
-import { Logo } from '../svg/Logo'
+import { IndexLogo } from '../svg/Logo'
 
 import styles from './MainLogo.module.scss'
 
@@ -9,7 +9,7 @@ export const MainLogo = ({ directLink }: { directLink: DirectLink }) => {
   return (
     <section className={styles['main-logo']}>
       <main className={styles['before-direct-link']}>
-        <Logo isAnimate={true} />
+        <IndexLogo />
       </main>
       {directLink.active && <DirectLink directLink={directLink} />}
     </section>
