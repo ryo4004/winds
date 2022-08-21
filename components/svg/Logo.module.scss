@@ -43,18 +43,22 @@
   }
 }
 
-.logo {
-  width: 80%;
-  max-width: 450px;
-  fill: #fff;
-
-  &.header {
+.header {
+  svg {
+    width: 80%;
+    max-width: 450px;
     fill: rgba(204, 148, 37, 1);
 
     &:hover {
       fill: rgba(204, 148, 37, 0.8);
     }
   }
+}
+
+.logo {
+  width: 80%;
+  max-width: 450px;
+  fill: #fff;
 
   &.footer {
     display: block;

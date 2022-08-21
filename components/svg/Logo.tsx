@@ -10,6 +10,14 @@ export const IndexLogo = () => {
   )
 }
 
+export const HeaderLogo = () => {
+  return (
+    <div className={styles.header}>
+      <LogoBody />
+    </div>
+  )
+}
+
 export const LogoBody = () => {
   return (
     <svg viewBox="0 0 271.828 30.001">
