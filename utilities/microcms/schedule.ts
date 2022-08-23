@@ -41,8 +41,11 @@ export const convertScheduleList = (scheduleApi: Array<ScheduleApi>): Array<Sche
 }
 
 const convertSchedule = (scheduleApi: ScheduleApi): Schedule => {
-  const { start, end } = calcTimeDivision(DateTime.fromISO(scheduleApi.date), scheduleApi.timeDivision)
-  const date = DateTime.fromISO(scheduleApi.date)
+  const { start, end } = calcTimeDivision(
+    DateTime.fromISO(scheduleApi.date, { zone: 'Asia/Tokyo' }),
+    scheduleApi.timeDivision
+  )
+  const date = DateTime.fromISO(scheduleApi.date, { zone: 'Asia/Tokyo' })
   return {
     date: date.toJSON(),
     month: date.month,
