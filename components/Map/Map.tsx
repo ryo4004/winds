@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect, ReactElement } from 'react'
+import { useState, useRef, useEffect, Children, isValidElement, cloneElement } from 'react'
+import type { ReactElement, FC, ReactNode } from 'react'
 import { Wrapper } from '@googlemaps/react-wrapper'
 
 import styles from './Map.module.scss'
@@ -28,10 +29,14 @@ const render = (status: StatusType): ReactElement => {
   if (status === STATUS.FAILURE) {
     return <h3>{status}</h3>
   }
-  return <MapBody center={MAP_CENTER} zoom={MAP_ZOOM} />
+  return (
+    <MapBody center={MAP_CENTER} zoom={MAP_ZOOM}>
+      <Marker position={new google.maps.LatLng(MAP_CENTER.lat, MAP_CENTER.lng)} />
+    </MapBody>
+  )
 }
 
-const MapBody = ({ center, zoom }: { center: Center; zoom: Zoom }) => {
+const MapBody = ({ center, zoom, children }: { center: Center; zoom: Zoom; children: ReactNode }) => {
   const [map, setMap] = useState<google.maps.Map>()
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -39,5 +44,38 @@ const MapBody = ({ center, zoom }: { center: Center; zoom: Zoom }) => {
       setMap(new window.google.maps.Map(ref.current, { center, zoom }))
     }
   }, [ref, map])
-  return <div ref={ref} className={styles.map} />
+  return (
+    <>
+      <div ref={ref} className={styles.map} />
+      {Children.map(children, (child) => {
+        if (isValidElement(child)) {
+          return cloneElement(child, { map })
+        }
+      })}
+    </>
+  )
+}
+
+const Marker: FC<google.maps.MarkerOptions> = (options) => {
+  const [marker, setMarker] = useState<google.maps.Marker>()
+
+  useEffect(() => {
+    if (!marker) {
+      setMarker(new google.maps.Marker())
+    }
+
+    return () => {
+      if (marker) {
+        marker.setMap(null)
+      }
+    }
+  }, [marker])
+
+  useEffect(() => {
+    if (marker) {
+      marker.setOptions(options)
+    }
+  }, [marker, options])
+
+  return null
 }
