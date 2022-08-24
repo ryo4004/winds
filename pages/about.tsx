@@ -3,6 +3,7 @@ import { Block } from '../components/Layout/Block'
 import { Text } from '../components/Layout/Text'
 
 import styles from '../styles/about.module.scss'
+import { Map } from '../components/Map/Map'
 
 const About = () => {
   return (
@@ -33,7 +34,9 @@ const About = () => {
           </p>
           <p>長岡在住のメンバーを中心とした総勢50名ほどで活動しております。</p>
         </Text>
-        <div id="map"></div>
+        <div id="map">
+          <Map />
+        </div>
       </Block>
 
       <Block title="会員募集" subTitle="Recruit">
