@@ -25,10 +25,10 @@ export const Map = ({ mapStyles, className }: { mapStyles: google.maps.MapTypeSt
 const render = (mapStyles: google.maps.MapTypeStyle[], className?: string) => {
   return (status: StatusType): ReactElement => {
     if (status === STATUS.LOADING) {
-      return <h3>{status}</h3>
+      return <div className={styles.loading}>読み込み中...</div>
     }
     if (status === STATUS.FAILURE) {
-      return <h3>{status}</h3>
+      return <div className={styles.failure}>読み込みに失敗しました</div>
     }
     return (
       <MapBody center={MAP_CENTER} zoom={MAP_ZOOM} mapStyles={mapStyles} className={className}>
