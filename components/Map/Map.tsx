@@ -18,11 +18,11 @@ type Zoom = number
 const MAP_CENTER: Center = { lat: 37.464904, lng: 138.829251 }
 const MAP_ZOOM: Zoom = 16
 
-export const Map = ({ mapStyles }: { mapStyles: google.maps.MapTypeStyle[] }) => {
-  return <Wrapper apiKey={process.env.NEXT_PUBLIC_MAP_API_KEY || ''} render={render(mapStyles)} />
+export const Map = ({ mapStyles, className }: { mapStyles: google.maps.MapTypeStyle[]; className?: string }) => {
+  return <Wrapper apiKey={process.env.NEXT_PUBLIC_MAP_API_KEY || ''} render={render(mapStyles, className)} />
 }
 
-const render = (mapStyles: google.maps.MapTypeStyle[]) => {
+const render = (mapStyles: google.maps.MapTypeStyle[], className?: string) => {
   return (status: StatusType): ReactElement => {
     if (status === STATUS.LOADING) {
       return <h3>{status}</h3>
@@ -31,7 +31,7 @@ const render = (mapStyles: google.maps.MapTypeStyle[]) => {
       return <h3>{status}</h3>
     }
     return (
-      <MapBody center={MAP_CENTER} zoom={MAP_ZOOM} mapStyles={mapStyles}>
+      <MapBody center={MAP_CENTER} zoom={MAP_ZOOM} mapStyles={mapStyles} className={className}>
         <Marker position={new google.maps.LatLng(MAP_CENTER.lat, MAP_CENTER.lng)} />
       </MapBody>
     )
@@ -42,11 +42,13 @@ const MapBody = ({
   center,
   zoom,
   mapStyles,
+  className,
   children,
 }: {
   center: Center
   zoom: Zoom
   mapStyles: google.maps.MapTypeStyle[]
+  className?: string
   children: ReactNode
 }) => {
   const [map, setMap] = useState<google.maps.Map>()
@@ -58,7 +60,7 @@ const MapBody = ({
   }, [ref, map])
   return (
     <>
-      <div ref={ref} className={styles.map} />
+      <div ref={ref} className={className || styles.map} />
       {Children.map(children, (child) => {
         if (isValidElement(child)) {
           return cloneElement(child, { map })

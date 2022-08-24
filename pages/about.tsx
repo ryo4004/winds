@@ -35,7 +35,7 @@ const About = () => {
           <p>長岡在住のメンバーを中心とした総勢50名ほどで活動しております。</p>
         </Text>
         <div id="map">
-          <Map mapStyles={aboutStyles} />
+          <Map mapStyles={aboutStyles} className={styles.map} />
         </div>
       </Block>
 
@@ -386,6 +386,5 @@ const aboutStyles: google.maps.MapTypeStyle[] = [
     ],
   },
 ]
-
 
 export default About
