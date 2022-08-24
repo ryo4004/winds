@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, Children, isValidElement, cloneElement } from 'react'
-import type { ReactElement, FC, ReactNode } from 'react'
+import type { ReactElement, FunctionComponent, ReactNode } from 'react'
 import { Wrapper } from '@googlemaps/react-wrapper'
+import type { Status } from '@googlemaps/react-wrapper'
 
 import styles from './Map.module.scss'
 
@@ -9,8 +10,6 @@ const STATUS = {
   FAILURE: 'FAILURE',
   SUCCESS: 'SUCCESS',
 } as const
-
-type StatusType = typeof STATUS[keyof typeof STATUS]
 
 type Center = { lat: number; lng: number }
 type Zoom = number
@@ -23,7 +22,7 @@ export const Map = ({ mapStyles, className }: { mapStyles: google.maps.MapTypeSt
 }
 
 const render = (mapStyles: google.maps.MapTypeStyle[], className?: string) => {
-  return (status: StatusType): ReactElement => {
+  return function MapComponent(status: Status): ReactElement {
     if (status === STATUS.LOADING) {
       return <div className={styles.loading}>読み込み中...</div>
     }
@@ -70,7 +69,7 @@ const MapBody = ({
   )
 }
 
-const Marker: FC<google.maps.MarkerOptions> = (options) => {
+const Marker: FunctionComponent<google.maps.MarkerOptions> = (options) => {
   const [marker, setMarker] = useState<google.maps.Marker>()
 
   useEffect(() => {
