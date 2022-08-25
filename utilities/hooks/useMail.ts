@@ -9,6 +9,7 @@ const initialState = (): MailForm => ({
 
 export const useMail = () => {
   const [state, setState] = useState(initialState())
+  const [sent, setSent] = useState(false)
 
   const send = async () => {
     await fetch('/api/mail', {
@@ -17,6 +18,7 @@ export const useMail = () => {
       body: JSON.stringify(state),
     })
     setState(initialState())
+    setSent(true)
   }
 
   const updateState = (key: keyof MailForm, value: string) => {
@@ -24,11 +26,13 @@ export const useMail = () => {
       ...state,
       [key]: value,
     }))
+    setSent(false)
   }
 
   return {
     ...state,
     updateForm: updateState,
     send,
+    sent,
   }
 }
