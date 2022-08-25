@@ -1,12 +1,16 @@
+import { useState } from 'react'
+import classNames from 'classnames'
+
 import { Block } from '../Layout/Block'
 import { Text } from '../Layout/Text'
 
-import styles from './Contact.module.scss'
-
 import { useMail } from '../../utilities/hooks/useMail'
+
+import styles from './Contact.module.scss'
 
 export const Contact = () => {
   const { name, email, message, updateForm, send } = useMail()
+  const [confirm, setConfirm] = useState(false)
   return (
     <div className={styles.contact}>
       <Block title="お問い合わせ" subTitle="Contact">
@@ -25,6 +29,7 @@ export const Contact = () => {
               className={styles.name}
               id="form-name"
               required={true}
+              disabled={confirm}
             />
           </label>
           <label>
@@ -40,6 +45,7 @@ export const Contact = () => {
               placeholder="連絡可能なメールアドレスを入力してください"
               id="form-email"
               required={true}
+              disabled={confirm}
             />
           </label>
           <label>
@@ -51,11 +57,47 @@ export const Contact = () => {
               className={styles.text}
               id="form-message"
               required={true}
+              disabled={confirm}
             />
           </label>
-          <button type="submit" name="send" className={styles.sendbutton} value="send" onClick={send}>
-            確認
-          </button>
+          {!confirm && (
+            <button
+              type="submit"
+              name="send"
+              className={styles.sendbutton}
+              value="send"
+              onClick={() => setConfirm(true)}
+            >
+              確認
+            </button>
+          )}
+          {confirm && (
+            <>
+              <div className={styles.message}>
+                <p>この内容でよろしければ、送信ボタンを押してください。</p>
+              </div>
+              <div className={styles.button}>
+                <button
+                  type="submit"
+                  name="modify"
+                  className={styles['send-button']}
+                  value="modify"
+                  onClick={() => setConfirm(false)}
+                >
+                  修正する
+                </button>
+                <button
+                  type="submit"
+                  name="send"
+                  className={classNames(styles['send-button'], styles.confirm)}
+                  value="confirm"
+                  onClick={send}
+                >
+                  送信
+                </button>
+              </div>
+            </>
+          )}
         </form>
       </Block>
     </div>
