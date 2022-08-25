@@ -18,7 +18,7 @@ export const Contact = () => {
           <p>ザ・ウィンド・アンサンブルに関するご意見、ご質問、メッセージ等お気軽にお問い合わせください。</p>
           <p>また、出張、依頼演奏などもこちらから受け付けております。</p>
         </Text>
-        <form method="post" action="contact" id="contact-form">
+        <div className={styles.form}>
           <label>
             <span>お名前</span>
             <input
@@ -98,7 +98,7 @@ export const Contact = () => {
               </div>
             </>
           )}
-        </form>
+        </div>
       </Block>
     </div>
   )
